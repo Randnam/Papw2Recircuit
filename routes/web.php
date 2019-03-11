@@ -23,3 +23,7 @@ Route::get('/main', 'mainControl@main')->name('main');
 
 Route::get('/land', 'mainControl@land')->name('land');
 
+Route::get('/profile', 'mainControl@profile')->name('profile');
+
+Route::get('/settings', 'mainControl@settings')->name('settings');
+

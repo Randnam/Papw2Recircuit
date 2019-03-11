@@ -3,3 +3,44 @@
 
 	margin-top: 5%;
 }
+
+.hand-over:hover{
+
+	cursor: pointer;
+
+}
+
+.icon-login{
+
+}
+
+.bold{
+	font-weight: bold;
+}
+
+.circuit-bg{
+	background-image: url('../imgs/B3.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.roundd{
+	border-radius: 90rem;
+}
+
+.text-mid{
+	text-align: center;
+	font-size: 1.0vw;
+}
+
+.wht-text{
+	color: white;
+}
+
+.cst-blue-bg{
+	background-color: #015eb5;
+}
+
+.csm-m-xl{
+	margin-bottom: 7.65rem;
+}

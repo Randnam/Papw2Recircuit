@@ -29,4 +29,14 @@ class mainControl extends Controller
     public function land(){
         return view('land');
     }
+
+    public function profile(){
+
+        return view('profile');
+    }
+
+    public function settings(){
+
+        return view('settings');
+    }
 }

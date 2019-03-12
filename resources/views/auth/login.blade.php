@@ -12,6 +12,18 @@
                         @csrf
 
                         <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">Tipo:</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control">
+                                    <option>Usuario</option>
+                                    <option>Adminsitrador</option>
+     
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">

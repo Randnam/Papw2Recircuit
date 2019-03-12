@@ -6,28 +6,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Recircuit</title>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="{{asset('css/reStyle.css')}}">
 
   <script type="text/javascript" src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
 
+ 
   <script type="text/javascript">
     $(document).ready(function() {
 
-      $('#navbarDropdown').click(function() {
-
-        $('#dropMenu').toggle("fast",function() {});
-      });
-
-      $('#navbarDropdownProf').click(function() {
-
-        $('#dropProf').toggle("fast",function() {});
-      });
 
       $('#menu_expand').click(function() {
 
         $('#navbarSupportedContent').toggle("fast",function() {});
+      });
+
+      $('.dropdown-toggle').on('click', function() {
+        $(this).parent().find("div.dropdown-menu").toggle("fast",function() {});
       });
 
     });
@@ -49,13 +46,13 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle hand-over" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          El Sitio :D
+          El sitio :D
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropMenu">
           <a class="dropdown-item" href="{{route('land')}}">Landing</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="{{route('profile')}}">Perfil</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Placeholder para entrega</a>
         </div>
       </li>
        <li class="nav-item ml-md-5 md-0">

@@ -53,7 +53,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropMenu">
           <a class="dropdown-item" href="{{route('land')}}">Landing</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="{{route('profile')}}">Perfil</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
@@ -72,8 +72,9 @@
           Usurario <img src="{{asset('imgs/profileExmpl.png')}}" class="roundd" width="40" height="30">
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="dropProf">
-          <a class="dropdown-item" href="{{route('profile')}}">{{ __('My Profile') }}</a>
-          <a class="dropdown-item" href="{{route('settings')}}">{{ __('Configuration') }}</a>
+          <a class="dropdown-item" href="{{route('profile')}}"><img src="{{asset('imgs/avatar.png')}}"> {{ __('My Profile') }}</a>
+          <a class="dropdown-item" href="{{route('settings')}}"><img src="{{asset('imgs/settings.png')}}"> {{ __('Configuration') }}</a>
+          <a class="dropdown-item" href="{{route('settings')}}"><img src="{{asset('imgs/register.png')}}"> Crear diseño</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">{{ __('Logout') }}</a>
         </div>
@@ -87,7 +88,7 @@
 		<h3>{{ __('Recircuit is a circuit schematic repository holding over a thousand schematics, from simple to complex, we have it') }}</h3>
 		
 	</div>
-	<div class="card border-dark col-md-6 px-0 float-right lower-aligment">
+	<div class="card border-dark col-md-6 px-0 float-right mt-3">
 		<div class="card-header">
 			<h2>Registrate ahora</h2>
 				<p>Para adentrarte al repositorio más grande de circuitos</p>
@@ -95,6 +96,24 @@
 		<div class="card-body">
 			<form method="POST" action="{{ route('register') }}">
 			@csrf
+
+				<div class="form-group row">
+				<label class="col-md-4 col-form-label text-md-right" >Nombre:</label> 
+
+				<div class="col-md-6">
+				<input type="text" name="name"> 
+				</div>
+
+				</div>
+
+				<div class="form-group row">
+				<label class="col-md-4 col-form-label text-md-right" >Apellido:</label> 
+
+				<div class="col-md-6">
+				<input type="text" name="lastname"> 
+				</div>
+
+				</div>
 			
 				<div class="form-group row">
 				<label class="col-md-4 col-form-label text-md-right" >Usuario:</label> 

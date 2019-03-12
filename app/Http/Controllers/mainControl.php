@@ -39,4 +39,19 @@ class mainControl extends Controller
 
         return view('settings');
     }
+
+     public function schema(){
+
+        return view('schema');
+    }
+
+     public function cschema(){
+
+        return view('cschema');
+    }
+
+     public function mschema(){
+
+        return view('mschema');
+    }
 }

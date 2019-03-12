@@ -20,7 +20,7 @@
 
 .circuit-bg{
 	background-image: url('../imgs/B3.jpg');
-	background-repeat: no-repeat;
+	background-repeat: repeat-y;
 	background-size: 100%;
 }
 
@@ -43,4 +43,46 @@
 
 .csm-m-xl{
 	margin-bottom: 7.65rem;
+}
+
+.text-title{
+	font-size: 2.5rem;
+}
+
+.text-sub-1{
+	font-size: 1.5rem;
+}
+
+.text-sub-2{
+	font-size: 1.5rem;
+}
+
+.text-sub-3{
+	font-size: 1.0rem;
+}
+
+.inline-img{
+	display: inline-block;
+}
+
+.pnw{
+	background-color: #8531e0 ;
+	color: #f9f7fc;
+}
+
+.pnw:hover{
+	box-shadow: 2px;
+	background-color: #f9f7fc ;
+	color: #8531e0  ;
+}
+
+.rnw{
+	background-color: #ff3838 ;
+	color: #f9f7fc;
+}
+
+.rnw:hover{
+	box-shadow: 2px;
+	background-color: #f9f7fc  ;
+	color: #ff3838  ;
 }

@@ -17,8 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/main', 'mainControl@main')->name('main');
 
 Route::get('/land', 'mainControl@land')->name('land');
@@ -27,3 +25,8 @@ Route::get('/profile', 'mainControl@profile')->name('profile');
 
 Route::get('/settings', 'mainControl@settings')->name('settings');
 
+Route::get('/schema', 'mainControl@schema')->name('schema');
+
+Route::get('/cschema', 'mainControl@cschema')->name('cschema');
+
+Route::get('/mschema', 'mainControl@mschema')->name('mschema');

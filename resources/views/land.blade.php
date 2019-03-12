@@ -54,14 +54,15 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropMenu">
           <a class="dropdown-item" href="{{route('land')}}">Landing</a>
           <a class="dropdown-item" href="{{route('profile')}}">Perfil</a>
+          <a class="dropdown-item" href="{{route('admin')}}">Admin</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Placeholder para entrega</a>
         </div>
       </li>
       <li class="nav-item ml-md-5 my-0">
-      	<form class="form-inline my-0 my-lg-0">
-      	<input class="form-control mr-sm-1" type="search" placeholder="Buscar" aria-label="Buscar">
-      	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      	<form class="form-inline my-0 my-lg-0"  action="{{route('search')}}" method="GET">
+      	<input class="form-control mr-sm-1" type="text" placeholder="Buscar" aria-label="Buscar">
+      	<a href="{{route('search')}}"><button class="btn btn-outline-success my-2 my-sm-0">Buscar</button></a>
     	</form>
       </li>	
     </ul>
@@ -74,7 +75,7 @@
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="dropProf">
           <a class="dropdown-item" href="{{route('profile')}}"><img src="{{asset('imgs/avatar.png')}}"> {{ __('My Profile') }}</a>
           <a class="dropdown-item" href="{{route('settings')}}"><img src="{{asset('imgs/settings.png')}}"> {{ __('Configuration') }}</a>
-          <a class="dropdown-item" href="{{route('settings')}}"><img src="{{asset('imgs/register.png')}}"> Crear diseño</a>
+          <a class="dropdown-item" href="{{route('cschema')}}"><img src="{{asset('imgs/register.png')}}"> Crear diseño</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">{{ __('Logout') }}</a>
         </div>

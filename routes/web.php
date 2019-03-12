@@ -30,3 +30,7 @@ Route::get('/schema', 'mainControl@schema')->name('schema');
 Route::get('/cschema', 'mainControl@cschema')->name('cschema');
 
 Route::get('/mschema', 'mainControl@mschema')->name('mschema');
+
+Route::get('/search', 'mainControl@search')->name('search');
+
+Route::get('/admin', 'mainControl@admin')->name('admin');

@@ -54,4 +54,14 @@ class mainControl extends Controller
 
         return view('mschema');
     }
+
+     public function search(){
+
+        return view('search');
+    }
+
+    public function admin(){
+        return view('admin');
+    }
+
 }

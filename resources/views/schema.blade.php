@@ -54,8 +54,9 @@
 
 				<div class="container">
 					<p>Publicado el: <b>12-12-2049</b></p>
-					<button class="btn btn-info float-right"><img src="{{asset('imgs/settings.png')}}"> Modificar</button>
-					<button class="btn btn-danger float-right mr-1"><img src="{{asset('imgs/garbage.png')}}"> Borrar</button>
+					<button class="btn btn-danger rnw float-right mx-1"><img src="{{asset('imgs/danger.png')}}"> Reportar</button>
+					<a href="{{route('mschema')}}"><button class="btn btn-info cnw float-right mx-1"><img src="{{asset('imgs/settings.png')}}"> Modificar</button></a>
+					<button class="btn btn-danger rnw float-right mx-1"><img src="{{asset('imgs/garbage.png')}}"> Borrar</button>
 				</div>
 			</div>
 		</div>
@@ -69,7 +70,7 @@
 			<div class="card-body">
 
 				<div class="card mb-3">
-					<div class="card-header"> Deja tu comentario</div>
+					<div class="card-header bold"> Deja tu comentario</div>
 					<div class="card-body d-flex justify-content-start">
 						<img class="col-sm-2 h-25" src="{{asset('imgs/RE.png')}}">
 						<form class="ml-5 w-100 container-fluid">
@@ -91,8 +92,8 @@
 
 								</div>
 								<div class="d-flex justify-content-end">
-									<button class="btn btn-primary" type="submit">
-										<img src="{{asset('imgs/check.png')}}"> Publicar
+									<button class="btn btn-primary bnw" type="submit">
+										<img src="{{asset('imgs/check.png')}}"> Comentar
 									</button>
 								</div>
 						</form>
@@ -108,7 +109,7 @@
 				
 						<img class="w-100" src="{{asset('imgs/RE.png')}}">		
 						<a class="text-sub-3 mx-auto" href="{{route('profile')}}" >Usuario</a>
-						<p class="text-sub-3 mx-auto">ROL DE USUARIO</p>
+						<p class="text-sub-3 mx-auto bold">ROL DE USUARIO</p>
 						
 						</div>
 
@@ -116,16 +117,18 @@
 
 						<div class="card container-fluid px-0">
 							<div class="card-header"><b>Titulo</b>
-							<p class="w-75 ml-5 mb-0"><b>25</b> Me gusta</p></div>
+							<p class="w-75 ml-5 mb-0"><b>1</b> Me gusta</p></div>
 							<div class="card-body">
 								<p class="text-sub-3">
 								Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
 								</p>
 							</div>
 							<div class="card-footer text-muted d-flex justify-content-around">
-    						<p class="mb-0 w-75">Publicado el 2013</p>
-    						<button class="btn btn-primary w-25">Me gusta</button>
-    						<button class="btn btn-danger w-25 ml-1">
+    						<p class="mb-0 w-75 bold">Publicado el 20-10-2049 20:00:32</p>
+    						<button class="btn btn-primary pnw w-25"><img  src="{{asset('imgs/add-friend.png')}}">Seguir</button>
+    						<button class="btn btn-primary bnw w-25">
+    						<img  src="{{asset('imgs/like.png')}}">Me gusta</button>
+    						<button class="btn btn-danger rnw w-25 ml-1">
 							<img  src="{{asset('imgs/garbage.png')}}"> Borrar</button>
   							</div>
 						</div>

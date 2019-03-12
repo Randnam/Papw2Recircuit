@@ -34,7 +34,7 @@
 
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 
-						<p><a href="{{route('settings')}}"><button class="btn btn-info"> <img  src="{{asset('imgs/add-friend.png')}}">Seguir</button> <button class="float-right btn btn-info"><img  src="{{asset('imgs/settings.png')}}"> Modificar</button></a></p>
+						<p><a href="{{route('settings')}}"><button class="btn btn-info pnw"> <img  src="{{asset('imgs/add-friend.png')}}">Seguir</button> <button class="float-right btn btn-info cnw"><img  src="{{asset('imgs/settings.png')}}"> Modificar</button></a></p>
 
 						</div>	
 					</div>
@@ -46,7 +46,7 @@
 			<div class="card mb-1">
 				<div class="card-header form-inline d-flex justify-content-between cst-blue-bg wht-text">
 				<h4>Diseños del usuario</h4>
-				<a href="{{route('cschema')}}"><button class="btn btn-info"><img src="{{asset('imgs/add.png')}}"> Crear diseño</button></a>
+				<a href="{{route('cschema')}}"><button class="btn btn-info cnw"><img src="{{asset('imgs/add.png')}}"> Crear diseño</button></a>
 				</div>
 
 				<div class="card-body">
@@ -69,7 +69,7 @@
 								</div>
 								
 								<div class="dropdown mx-auto col-md-7 p-1">
-  								<button class="btn btn-secondary dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
+  								<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
    								
   								</button>
  								 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -101,7 +101,7 @@
 								</div>
 
 								<div class="dropdown mx-auto col-md-7 p-1">
-  								<button class="btn btn-secondary dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
+  								<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
    								
   								</button>
  								 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -132,7 +132,7 @@
 								</div>
 
 								<div class="dropdown mx-auto col-md-7 p-1">
-  								<button class="btn btn-secondary dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
+  								<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
    								
   								</button>
  								 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -163,7 +163,7 @@
 								</div>
 
 								<div class="dropdown mx-auto col-md-7 p-1">
-  								<button class="btn btn-secondary dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
+  								<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
    								
   								</button>
  								 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

@@ -86,3 +86,47 @@
 	background-color: #f9f7fc  ;
 	color: #ff3838  ;
 }
+
+.bnw{
+	background-color: #0261f9 ;
+	color: #f9f7fc;
+}
+
+.bnw:hover{
+	box-shadow: 2px;
+	background-color: #f9f7fc ;
+	color: #0261f9  ;
+}
+
+.rnw{
+	background-color: #cc0d00 ;
+	color: #f9f7fc;
+}
+
+.rnw:hover{
+	box-shadow: 2px;
+	background-color: #f9f7fc  ;
+	color: #cc0d00  ;
+}
+
+.cnw{
+	background-color: #09b5ac ;
+	color: #f9f7fc;
+}
+
+.cnw:hover{
+	box-shadow: 2px;
+	background-color: #f9f7fc  ;
+	color: #09b5ac  ;
+}
+
+.gnw{
+	background-color: #757777 ;
+	color: #f9f7fc;
+}
+
+.gnw:hover{
+	box-shadow: 2px;
+	background-color: #f9f7fc  ;
+	color: #757777 ;
+}

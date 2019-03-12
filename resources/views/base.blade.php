@@ -9,9 +9,9 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <link rel="stylesheet" type="text/css" href="{{asset('css/reStyle.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{secure_asset('css/reStyle.css')}}">
 
-  <script type="text/javascript" src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
+  <script type="text/javascript" src="{{secure_asset('js/jquery-2.1.4.min.js')}}"></script>
 
  
   <script type="text/javascript">

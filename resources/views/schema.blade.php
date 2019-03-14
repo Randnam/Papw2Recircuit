@@ -71,23 +71,23 @@
 
 				<div class="card mb-3">
 					<div class="card-header bold"> Deja tu comentario</div>
-					<div class="card-body d-flex justify-content-start">
+					<div class="card-body d-inline-block">
 						<img class="col-sm-2 h-25" src="{{asset('imgs/RE.png')}}">
-						<form class="ml-5 w-100 container-fluid">
+						<form class="w-100 container-fluid">
 								<div class="form-group row d-flex justify-content-start w-100">
 								<label class="col-form-label text-md-right" >Titulo:</label> 
 
 								<div class="w-100">
-								<input class="w-75" type="text" name="title"> 
+								<input class="w-100" type="text" name="title"> 
 								</div>
 
 								</div>
 
-								<div class="form-group row d-flex justify-content-start w-100">
+								<div class="form-group row d-inline-block w-100">
 								<label class="col-form-label text-md-right" >Mensaje:</label> 
 
 								<div class="w-100">
-								<textarea name="message" cols="60" rows="4"></textarea>
+								<textarea class="w-100" name="message" cols="60" rows="4"></textarea>
 								</div>
 
 								</div>
@@ -102,10 +102,10 @@
 				<hr>
 				<div class="card">
 
-					<div class="card-body d-flex justify-content-start">
+					<div class="card-body d-inline-block ">
 
-						<div class="card col-md-3">
-						<div class="card-body">
+						<div class="card col-md-3 d-inline-block">
+						<div class="card-body text-center">
 				
 						<img class="w-100" src="{{asset('imgs/RE.png')}}">		
 						<a class="text-sub-3 mx-auto" href="{{route('profile')}}" >Usuario</a>
@@ -116,15 +116,17 @@
 						</div>
 
 						<div class="card container-fluid px-0">
-							<div class="card-header"><b>Titulo</b>
-							<p class="w-75 ml-5 mb-0"><b>1</b> Me gusta</p></div>
+							<div class="card-header text-sub-2"><b>Titulo</b>
+							<p class="float-right"><b>1</b> Me gusta</p>
+							</div>
 							<div class="card-body">
 								<p class="text-sub-3">
 								Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
 								</p>
 							</div>
-							<div class="card-footer text-muted d-flex justify-content-around">
+							<div class="card-footer text-muted d-inline-block">
     						<p class="mb-0 w-75 bold">Publicado el 20-10-2049 20:00:32</p>
+
     						<button class="btn btn-primary pnw w-25"><img  src="{{asset('imgs/add-friend.png')}}">Seguir</button>
     						<button class="btn btn-primary bnw w-25">
     						<img  src="{{asset('imgs/like.png')}}">Me gusta</button>

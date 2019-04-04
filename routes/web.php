@@ -21,7 +21,7 @@ Route::get('/main', 'mainControl@main')->name('main');
 
 Route::get('/land', 'mainControl@land')->name('land');
 
-Route::get('/profile', 'mainControl@profile')->name('profile');
+Route::get('/profile', 'UserController@profile')->name('profile');
 
 Route::get('/settings', 'mainControl@settings')->name('settings');
 
@@ -34,3 +34,8 @@ Route::get('/mschema', 'mainControl@mschema')->name('mschema');
 Route::get('/search', 'mainControl@search')->name('search');
 
 Route::get('/admin', 'mainControl@admin')->name('admin');
+
+Route::get('/register', 'UserController@create')->name('register');
+Route::post('/register', 'UserController@store');
+
+Route::resource('users', 'UserController');

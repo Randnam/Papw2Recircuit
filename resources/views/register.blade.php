@@ -8,7 +8,7 @@
                 <div class="card-header bold cst-blue-bg wht-text"> <p class="my-1">{{ __('Register now it is easy and quick') }}</p></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -28,7 +28,7 @@
                         <div class="form-group row">
                             <label for="" class="col-md-4 col-form-label text-md-right">Apellido:</label>
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" required autofocus>
+                                <input id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('lastname') }}" required autofocus>
 
                                 @if ($errors->has('lastname'))
                                     <span class="invalid-feedback" role="alert">
@@ -85,7 +85,7 @@
                             <label for="" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}:</label>
 
                             <div class="col-md-6">
-                                <input id="avatarPic" type="file" class="" name="avatarPicture" required>
+                                <input id="avatarPic" type="file" class="" name="avatar_path" required>
                             </div>
                         </div>
 
@@ -93,7 +93,7 @@
                             <label for="" class="col-md-4 col-form-label text-md-right">{{ __('Profile') }}:</label>
 
                             <div class="col-md-6">
-                                <input id="profilePic" type="file" class="" name="profilePicture" required>
+                                <input id="profilePic" type="file" class="" name="back_path" required>
                             </div>
                         </div>
 

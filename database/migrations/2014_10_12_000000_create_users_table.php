@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar_path');
             $table->string('back_path');
             $table->string('about_me');
+            $table->string('is_admin');
             $table->rememberToken();
             $table->timestamps();
         });

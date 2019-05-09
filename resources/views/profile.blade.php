@@ -23,12 +23,18 @@
 						</div>	
 					</div>
 					<div class="card container-fluid d-inline-block">
-						<div class="card-body w-100 p-1">
+						<div class="card-body w-100 ml-2 mt-2 p-1">
 				
 						<p>Nombre: {{ $user->name }} {{ $user->last_name }} </p>
-						<p class="bold">ROL DE USUARIO</p>
+						<p class="bold">
+						@if( $user->is_admin = "No" )
+							Usuario
+						@else
+							Administrador
+						@endif
+						</p>
 						<p>Miembro desde el: {{$user->created_at}}</p>
-						<p>0 Seguidores</p>
+						<p><b>0</b> Seguidores</p>
 
 						<p>Acerca de mi:</p>
 

@@ -18,7 +18,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name','last_name','username', 'email', 'password',
-        'avatar_path', 'back_path', 'about_me'
+        'avatar_path', 'back_path', 'about_me', 'is_admin'
         ];
 
     /**
@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token'
     ];
 
     public function getRouteKeyName(){
@@ -52,6 +52,10 @@ class User extends Authenticatable
 
     public function deslike(){
         return $this->hasMany('App\deslike');
+    }
+
+    public function design(){
+        return $this->hasMany('App\design');
     }
 
 }

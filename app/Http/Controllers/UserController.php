@@ -66,7 +66,8 @@ class UserController extends Controller
             'password' => Hash::make($request->input('password')),
             'avatar_path' => $profile_image_url,
             'back_path' => $back_image_url,
-            'about_me' => "Hola soy nuevo"
+            'about_me' => "Hola soy nuevo",
+            'is_admin' => "No"
             ]);
 
         return view('main');

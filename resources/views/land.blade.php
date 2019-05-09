@@ -70,8 +70,12 @@
           <a class="dropdown-item" href="{{route('profile', ['id' => auth()->user()->id])}}"><img src="{{asset('imgs/avatar.png')}}"> {{ __('My Profile') }}</a>
           <a class="dropdown-item" href="{{route('settings')}}"><img src="{{asset('imgs/settings.png')}}"> {{ __('Configuration') }}</a>
           <a class="dropdown-item" href="{{route('cschema')}}"><img src="{{asset('imgs/register.png')}}"> Crear diseño</a>
+
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">{{ __('Logout') }}</a>
+
+          <a class="dropdown-item" href="{{route('logout')}}"> 
+          <img src="{{asset('imgs/exit.png')}}"> {{ __('Logout') }} </a>
+
         </div>
       </li>
      @else

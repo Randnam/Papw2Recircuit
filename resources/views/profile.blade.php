@@ -8,33 +8,46 @@
 
 		<div class="card-body">
 			
-			<h3>Perfil de Usuario</h3>
+			<h3 class="bold">Perfil de {{$user->username}}</h3>
 
 			<div class="card mb-1">
 				
 
-				<div class="card-body justify-content-start">
+				<div style="background-image: url({{asset("$user->back_path")}});" class="card-body justify-content-start profileBack">
 			
 					<div class="card col-md-4 d-inline-block">
 						<div class="card-body">
 				
-						<img class="w-100" src="{{asset('imgs/RE.png')}}">
+						<img class="w-100" src="{{asset("$user->avatar_path")}}">
 
 						</div>	
 					</div>
 					<div class="card container-fluid d-inline-block">
 						<div class="card-body w-100 p-1">
 				
-						<p>Nombre: Algo Buendia</p>
+						<p>Nombre: {{ $user->name }} {{ $user->last_name }} </p>
 						<p class="bold">ROL DE USUARIO</p>
-						<p>Miembro desde el: </p>
+						<p>Miembro desde el: {{$user->created_at}}</p>
 						<p>0 Seguidores</p>
 
 						<p>Acerca de mi:</p>
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+						<p>{{$user->about_me}}</p>
 
-						<p><a href="{{route('settings')}}"><button class="btn btn-info pnw"> <img  src="{{asset('imgs/add-friend.png')}}">Seguir</button> <button class="float-right btn btn-info cnw"><img  src="{{asset('imgs/settings.png')}}"> Modificar</button></a></p>
+						<p>
+					@auth
+
+						@if(auth()->user()->id != request()->route('id'))
+						<a href=""><button class="btn btn-info pnw"> <img  src="{{asset('imgs/add-friend.png')}}">Seguir</button></a>
+						@endif 
+
+						@if(auth()->user()->id == request()->route('id'))
+						<a href="{{route('settings')}}"><button class="float-right btn btn-info cnw"><img  src="{{asset('imgs/settings.png')}}"> Modificar</button></a>
+						@endif
+						
+					@endauth
+
+						</p>
 
 						</div>	
 					</div>
@@ -43,10 +56,24 @@
 				</div>
 			</div>
 
+			
+				@if(Session::has('success'))
+				<div class="card-body py-2 bg-success rounded">
+					<span class="text-white">{{Session::get('success')}}</span>
+				</div>	
+				@endif
+			
+
 			<div class="card mb-1">
 				<div class="card-header form-inline d-flex justify-content-between cst-blue-bg wht-text">
 				<h4>Diseños del usuario</h4>
+				@auth
+
+				@if(auth()->user()->id == request()->route('id'))
 				<a href="{{route('cschema')}}"><button class="btn btn-info cnw"><img src="{{asset('imgs/add.png')}}"> Crear diseño</button></a>
+				@endif
+
+				@endauth
 				</div>
 
 				<div class="card-body">
@@ -54,7 +81,7 @@
 					
 					<div id="carouselControl" class="carousel slide" data-ride="carousel">
 				  	<div class="carousel-inner">
-					    <div class="carousel-item text-center active">
+				<div class="carousel-item text-center active">
 
 				<div class="card d-inline-block col-md-3 mx-sm-1 px-1">
 					<div class="card-body align-middle text-mid px-1">
@@ -63,7 +90,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href=" ">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -92,7 +119,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href=" ">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -121,7 +148,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href=" ">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -154,7 +181,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href=" ">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -183,7 +210,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href=" ">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -212,7 +239,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href=" ">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -243,7 +270,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href=" ">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -272,7 +299,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href=" ">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -301,7 +328,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href=" ">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -359,7 +386,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -370,7 +397,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -381,7 +408,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -397,7 +424,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -408,7 +435,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -419,7 +446,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -434,7 +461,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -445,7 +472,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -456,7 +483,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -497,7 +524,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -508,7 +535,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -519,7 +546,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -535,7 +562,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -546,7 +573,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -557,7 +584,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -572,7 +599,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -583,7 +610,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>
@@ -594,7 +621,7 @@
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
-								<a href="{{route('profile')}}">Usuario</a>
+								<a href=" ">Usuario</a>
 								</div>
 							</div>
 						</div>

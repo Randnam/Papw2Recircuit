@@ -7,13 +7,15 @@
 
   <title>Recircuit</title>
 
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" type="text/css" href="{{secure_asset('css/reStyle.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('css/reStyle.css')}}">
 
 
  
@@ -46,7 +48,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropMenu">
           <a class="dropdown-item" href="{{route('land')}}">Landing</a>
-          <a class="dropdown-item" href="{{route('profile')}}">Perfil</a>
+          
           <a class="dropdown-item" href="{{route('admin')}}">Admin</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Placeholder para entrega</a>
@@ -63,12 +65,29 @@
       </li> 
     </ul>
      <ul class="nav navbar-nav navbar-right">
+     @auth
+        <?php $userImg = auth()->user()->avatar_path ?>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle hand-over" id="navbarDropdownProf" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{auth()->user()->name}} {{auth()->user()->last_name}} 
+          <img src="{{asset("$userImg")}}" class="roundd" width="40" height="30">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="dropProf">
+          <a class="dropdown-item" href="{{route('profile', ['id' => auth()->user()->id])}}"><img src="{{asset('imgs/avatar.png')}}"> {{ __('My Profile') }}</a>
+          <a class="dropdown-item" href="{{route('settings')}}"><img src="{{asset('imgs/settings.png')}}"> {{ __('Configuration') }}</a>
+          <a class="dropdown-item" href="{{route('cschema')}}"><img src="{{asset('imgs/register.png')}}"> Crear diseño</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">{{ __('Logout') }}</a>
+        </div>
+      </li>
+     @else
       <li>
         <a class="btn btn-primary mr-sm-1" href="{{route('register')}}"><span class="icon-signup"><img src="{{asset('imgs/register.png')}}"></span> {{ __('Register') }}</a></li>
       <li>
       <a class="btn btn-primary" href="{{route('login')}}"><span class="mr-sm-1"> 
         <img src="{{asset('imgs/login.png')}}">
        </span> {{ __('Login') }}</a></li>
+    @endauth
     </ul>
 
   </div>

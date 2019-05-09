@@ -8,7 +8,7 @@
 		
 		<div class="card-header">
 			<p class="w-100 text-title bold mb-2">Nombre del diseño</p>
-			<p class="text-sub-2 bold mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+			<p class="text-sub-2 bold mb-2">Por <a href="{{route('profile', ['id' => auth()->user()->id])}}">Usuario</a></p>
 			<div class="container d-flex justify-content-end align-self-center">
 					<p class="bold">Rating:</p>
 					<img  src="{{asset('imgs/starBF.png')}}" width="32px" height="32px">
@@ -108,7 +108,7 @@
 						<div class="card-body text-center">
 				
 						<img class="w-100" src="{{asset('imgs/RE.png')}}">		
-						<a class="text-sub-3 mx-auto" href="{{route('profile')}}" >Usuario</a>
+						<a class="text-sub-3 mx-auto" href="{{route('profile', ['id' => auth()->user()->id])}}" >Usuario</a>
 						<p class="text-sub-3 mx-auto bold">ROL DE USUARIO</p>
 						
 						</div>

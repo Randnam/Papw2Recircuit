@@ -28,7 +28,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href="{{route('profile', ['id' => 1])}}">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -47,7 +47,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href="{{route('profile', ['id' => 1])}}">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -66,7 +66,7 @@
 						</a>
 						<div class="container align-middle w-100 h-75 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href="{{route('profile', ['id' => 1])}}">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -89,7 +89,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href="{{route('profile', ['id' => 1])}}">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -108,7 +108,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href="{{route('profile', ['id' => 1])}}">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -127,7 +127,7 @@
 						</a>
 						<div class="container align-middle w-100 h-75 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href="{{route('profile', ['id' => 1])}}">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -148,7 +148,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href="{{route('profile', ['id' => 1])}}">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -167,7 +167,7 @@
 						</a>
 						<div class="container align-middle w-100 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href="{{route('profile', ['id' => 1])}}">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
@@ -186,7 +186,7 @@
 						</a>
 						<div class="container align-middle w-100 h-75 text-sub-3">
 						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href="{{route('profile')}}">Usuario</a></p>
+						<p class="mb-2">Por <a href="{{route('profile', ['id' => 1])}}">Usuario</a></p>
 						<div class="container d-flex justify-content-center">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
 							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">

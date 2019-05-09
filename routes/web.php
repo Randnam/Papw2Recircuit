@@ -11,31 +11,36 @@
 |
 */
 
-Route::get('/', function () {
-    return view('land');
-});
+Route::get('/', 'mainControl@land');
 
 Auth::routes();
 
 Route::get('/main', 'mainControl@main')->name('main');
 
-Route::get('/land', 'mainControl@land')->name('land');
+Route::get('/land', 'mainControl@land')->name('land')->middleware('guest');
 
-Route::get('/profile', 'UserController@profile')->name('profile');
+Route::get('/profile/{id}', 'UserController@show')->name('profile');
 
-Route::get('/settings', 'mainControl@settings')->name('settings');
+Route::get('/settings', 'UserController@edit')->name('settings')->middleware('auth');
+
+Route::put('/settings', 'UserController@update');
 
 Route::get('/schema', 'mainControl@schema')->name('schema');
 
-Route::get('/cschema', 'mainControl@cschema')->name('cschema');
+Route::get('/cschema', 'mainControl@cschema')->name('cschema')->middleware('auth');
 
-Route::get('/mschema', 'mainControl@mschema')->name('mschema');
+Route::get('/mschema', 'mainControl@mschema')->name('mschema')->middleware('auth');
 
 Route::get('/search', 'mainControl@search')->name('search');
 
 Route::get('/admin', 'mainControl@admin')->name('admin');
 
-Route::get('/register', 'UserController@create')->name('register');
+Route::get('/register', 'UserController@create')->name('register')->middleware('guest');
 Route::post('/register', 'UserController@store');
+
+
+Route::get('/login', 'Auth\LoginController@showlogin')->name('login')->middleware('guest');
+Route::post('login', 'Auth\LoginController@login')->name('login');
+
 
 Route::resource('users', 'UserController');

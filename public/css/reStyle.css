@@ -1,3 +1,7 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
 
 .lower-aligment{
 
@@ -153,4 +157,12 @@
 
 .csm-gray-font{
 	color: #2212ba;
+}
+
+.card-tran{
+	background-color: #ffffff94;
+}
+
+.profileBack{
+	background-size: 100%;
 }

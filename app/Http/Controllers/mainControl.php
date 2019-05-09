@@ -26,8 +26,14 @@ class mainControl extends Controller
         return view('main');
     }
 
+ 
+
     public function land(){
+        if(isset(auth()->user()->id)){
+            return view('main');
+        }else{
         return view('land');
+        }
     }
 
     public function profile(){

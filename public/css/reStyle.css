@@ -1,5 +1,14 @@
 body {
   font-family: 'Raleway', sans-serif;
+ 
+}
+
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
 }
 
 
@@ -165,4 +174,17 @@ body {
 
 .profileBack{
 	background-size: 100%;
+}
+
+.pt-6{
+	 padding-top: 3.75rem !important;
+}
+
+.expand_bar{
+	width:30rem !important;
+}
+@media only screen and (max-width: 600px) {
+  .expand_bar {
+    width:16rem !important;
+  }
 }

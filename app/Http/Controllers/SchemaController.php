@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\design;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SchemaController extends Controller
 {
@@ -16,6 +17,20 @@ class SchemaController extends Controller
     public function index()
     {
         //
+
+        $designs = DB::table('designs')
+        ->join('users','users.id', '=', 'designs.idUser')
+        ->orderBy('designs.created_at', 'desc')
+        ->select('users.id as userid', 'users.username',
+                'designs.id', 'designs.title',
+                'designs.difficulty', 'designs.thumb_path')
+        ->limit(12)
+        ->get();
+
+
+
+
+        return view('main', compact('designs'));
     }
 
     /**
@@ -44,7 +59,7 @@ class SchemaController extends Controller
         'difficulty' => 'required|integer',
         ]);
 
-        //'title', 'description' , 'difficulty', 'thumb_path', 'img_path_one', 'img_path_two', 'img_path_three' , 'video_path', 'idUser' JESUS KILL ME NOW
+        //'title', 'description' , 'difficulty', 'thumb_path', 'img_path_one', 'img_path_two', 'img_path_three' , 'video_path', 'idUser' Good god help us all
 
          $thumbImage = $request->file('thumb_path');
          $thumbImageSaveAsName = time() .  "-thumb." . $thumbImage->getClientOriginalExtension();
@@ -88,7 +103,7 @@ class SchemaController extends Controller
             'idUser' => auth()->user()->id
             ]);
 
-         $design->user()->attach(User::where('id', auth()->user()->id));
+         
 
           return redirect()->route('main');
 
@@ -103,6 +118,22 @@ class SchemaController extends Controller
     public function show($id)
     {
         //
+        $designR = DB::table('designs')
+        ->join('users', 'users.id', '=', 'designs.idUser')
+        ->select('designs.*','users.id as userid',
+            'users.username')
+        ->where('designs.id', '=', $id)
+        ->get();
+
+        $design = $designR[0];
+
+        $deslikes = DB::table('deslikes')
+        ->where('deslikes.idDesign', '=', $id)
+        ->count();
+
+
+        return view('schema', compact('design','deslikes'));
+
     }
 
     /**
@@ -114,6 +145,16 @@ class SchemaController extends Controller
     public function edit($id)
     {
         //
+        $designR = DB::table('designs')
+        ->join('users', 'users.id', '=', 'designs.idUser')
+        ->select('designs.*','users.id as userid',
+            'users.username')
+        ->where('designs.id', '=', $id)
+        ->get();
+
+        $design = $designR[0];
+
+        return view('mschema', compact('design'));
     }
 
     /**

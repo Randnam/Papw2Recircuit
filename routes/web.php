@@ -15,7 +15,7 @@ Route::get('/', 'mainControl@land');
 
 Auth::routes();
 
-Route::get('/main', 'mainControl@main')->name('main');
+Route::get('/main', 'SchemaController@index')->name('main');
 
 Route::get('/land', 'mainControl@land')->name('land')->middleware('guest');
 
@@ -24,12 +24,10 @@ Route::get('/settings', 'UserController@edit')->name('settings')->middleware('au
 Route::put('/settings', 'UserController@update');
 
 
-Route::get('/schema', 'mainControl@schema')->name('schema');
-
+Route::get('/schema/{id}', 'SchemaController@show')->name('schema');
 Route::get('/cschema', 'SchemaController@create')->name('cschema')->middleware('auth');
 Route::post('/cschema', 'SchemaController@store');
-
-Route::get('/mschema', 'mainControl@mschema')->name('mschema')->middleware('auth');
+Route::get('/mschema/{id}', 'SchemaController@mschema')->name('mschema')->middleware('auth');
 
 Route::get('/search', 'mainControl@search')->name('search');
 

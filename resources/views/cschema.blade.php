@@ -10,7 +10,7 @@
 		</div>
 
 		<div class="card-body">
-			<form class="form-group px-2" method="POST" action="cschema">
+			<form class="form-group px-2" method="POST" action="cschema" enctype="multipart/form-data">
 			@csrf
 
 				<div class="row mb-2">

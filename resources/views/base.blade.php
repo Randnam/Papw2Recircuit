@@ -31,7 +31,7 @@
 
 </head>
 <body class="circuit-bg">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark">
    <a class="navbar-brand" href="{{route('main')}}"><img src="{{asset('imgs/RE.png')}}" width="40" height="30" class="d-inline-block align-top" alt="">Recircuit</a>
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="menu_expand">
     <span class="navbar-toggler-icon"></span>
@@ -42,22 +42,10 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{route('main')}}">Inicio <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle hand-over" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          El sitio :D
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropMenu">
-          <a class="dropdown-item" href="{{route('land')}}">Landing</a>
-          
-          <a class="dropdown-item" href="{{route('admin')}}">Admin</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Placeholder para entrega</a>
-        </div>
-      </li>
        <li class="nav-item ml-md-5 md-0">
         <form class="form-inline my-0 my-lg-0" action="{{route('search')}}" method="GET">
 
-        <input class="form-control mr-sm-1" type="text" placeholder="Buscar" aria-label="Buscar">
+        <input class="form-control mr-sm-1  expand_bar" type="text" placeholder="Buscar" aria-label="Buscar">
         <a href="{{route('search')}}"><button class="btn btn-outline-success my-2 my-sm-0"><span>
         <img src="{{asset('imgs/finder.png')}}"></span> Buscar</button></a>
 
@@ -96,7 +84,7 @@
   </div>
 </nav>
 
-  <div class="container">
+  <div class="container pt-6">
   @yield('content')
   </div>
 

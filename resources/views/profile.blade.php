@@ -87,277 +87,80 @@
 					
 					<div id="carouselControl" class="carousel slide" data-ride="carousel">
 				  	<div class="carousel-inner">
-				<div class="carousel-item text-center active">
+<div class="carousel-item text-center active">
+				  	<?php $i = 1 ?>
+				  	@foreach($designs as $design)
 
-				<div class="card d-inline-block col-md-3 mx-sm-1 px-1">
+				  	<?php $tImage = $design->thumb_path ?>
+				<div class="card btn d-inline-block col-md-3 mx-sm-1 px-1 cst-mg-start">
 					<div class="card-body align-middle text-mid px-1">
-						<a href="{{route('schema')}}">
-						<img src="{{asset('imgs/RE.png')}}" class="w-100">
+						<a href="{{ route('schema', ['id' => "$design->id"]) }}">
+						<img src="{{asset("$tImage")}}" class="w-100">
 						</a>
-						<div class="container align-middle w-100 text-sub-3">
-						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href=" ">Usuario</a></p>
+						<div class="container align-middle mt-5 w-100 text-sub-3">
+						<a href="{{ route('schema', ['id' => "$design->id"]) }}">{{$design->title}}</a>
+						<p class="mb-2">Por <a href="{{route('profile', ['id' => "$design->userid"])}}">{{$design->username}}</a></p>
 						<div class="container d-flex justify-content-center">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/emptyO.png')}}">
+							<p>Dificultad: <b>
+
+								@switch($design->difficulty)
+									@case(1)
+									    Principiante
+									    @break
+
+									@case(2)
+									    Avanzado
+									    @break
+
+									@case(3)
+									    Experto
+									    @break
+
+									@case(4)
+										Imposible
+										@break
+								@endswitch
+
+
+
+							 </b></p>
 						</div>
+						@auth
+
+						@if($design->userid == auth()->user()->id)
 						<div class="dropup mx-auto col-md-7 p-1">
-  								<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
-   								
-  								</button>
- 								 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    								<a class="dropdown-item" href="{{route('mschema')}}"><img  src="{{asset('imgs/register.png')}}"> Modificar</a>
-    								<a class="dropdown-item" href="#"><img src="{{asset('imgs/garbage.png')}}"> Borrar</a>
-   									 
-  								</div>
-								</div>
+						<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
+
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="{{route('mschema', ['id' => "$design->id"])}}"><img  src="{{asset('imgs/register.png')}}"> Modificar</a>
+						<a class="dropdown-item" href="#"><img src="{{asset('imgs/garbage.png')}}"> Borrar</a>
+
+						</div>
+						</div>
+						@endif
+
+						@endauth
 						</div>
 					</div>
 				</div>
 
-				<div class="card d-inline-block col-md-3 mx-sm-1 px-1">
-					<div class="card-body align-middle text-mid px-1">
-						<a href="{{route('schema')}}">
-						<img src="{{asset('imgs/RE.png')}}" class="w-100">
-						</a>
-						<div class="container align-middle w-100 text-sub-3">
-						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href=" ">Usuario</a></p>
-						<div class="container d-flex justify-content-center">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/emptyO.png')}}">
-						</div>
-						<div class="dropup mx-auto col-md-7 p-1">
-  								<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
-   								
-  								</button>
- 								 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    								<a class="dropdown-item" href="{{route('mschema')}}"><img  src="{{asset('imgs/register.png')}}"> Modificar</a>
-    								<a class="dropdown-item" href="#"><img src="{{asset('imgs/garbage.png')}}"> Borrar</a>
-   									 
-  								</div>
-								</div>
-						</div>
-					</div>
-				</div>
 
-				<div class="card d-inline-block col-md-3 mx-sm-1 px-1">
-					<div class="card-body align-middle text-mid px-1">
-						<a href="{{route('schema')}}">
-						<img src="{{asset('imgs/RE.png')}}" class="w-100">
-						</a>
-						<div class="container align-middle w-100 text-sub-3">
-						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href=" ">Usuario</a></p>
-						<div class="container d-flex justify-content-center">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/emptyO.png')}}">
-						</div>
-						<div class="dropup mx-auto col-md-7 p-1">
-  								<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
-   								
-  								</button>
- 								 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    								<a class="dropdown-item" href="{{route('mschema')}}"><img  src="{{asset('imgs/register.png')}}"> Modificar</a>
-    								<a class="dropdown-item" href="#"><img src="{{asset('imgs/garbage.png')}}"> Borrar</a>
-   									 
-  								</div>
-								</div>
-						</div>
-					</div>
-				</div>
-
-			
+				  		@if($i == 3)
 					    </div>
-					    <div class="carousel-item text-center">
-					    
-				<div class="card d-inline-block col-md-3 mx-sm-1 px-1">
-					<div class="card-body align-middle text-mid px-1">
-						<a href="{{route('schema')}}">
-						<img src="{{asset('imgs/RE.png')}}" class="w-100">
-						</a>
-						<div class="container align-middle w-100 text-sub-3">
-						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href=" ">Usuario</a></p>
-						<div class="container d-flex justify-content-center">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/emptyO.png')}}">
-						</div>
-						<div class="dropup mx-auto col-md-7 p-1">
-  								<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
-   								
-  								</button>
- 								 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    								<a class="dropdown-item" href="{{route('mschema')}}"><img  src="{{asset('imgs/register.png')}}"> Modificar</a>
-    								<a class="dropdown-item" href="#"><img src="{{asset('imgs/garbage.png')}}"> Borrar</a>
-   									 
-  								</div>
-								</div>
-						</div>
-					</div>
-				</div>
+					    <?php $i = 0 ?>
+					     <div class="carousel-item text-center">
+					    @else
+					    	<?php $i++ ?>
+						@endif
 
-				<div class="card d-inline-block col-md-3 mx-sm-1 px-1">
-					<div class="card-body align-middle text-mid px-1">
-						<a href="{{route('schema')}}">
-						<img src="{{asset('imgs/RE.png')}}" class="w-100">
-						</a>
-						<div class="container align-middle w-100 text-sub-3">
-						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href=" ">Usuario</a></p>
-						<div class="container d-flex justify-content-center">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/emptyO.png')}}">
-						</div>
-						<div class="dropup mx-auto col-md-7 p-1">
-  								<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
-   								
-  								</button>
- 								 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    								<a class="dropdown-item" href="{{route('mschema')}}"><img  src="{{asset('imgs/register.png')}}"> Modificar</a>
-    								<a class="dropdown-item" href="#"><img src="{{asset('imgs/garbage.png')}}"> Borrar</a>
-   									 
-  								</div>
-								</div>
-						</div>
-					</div>
-				</div>
+				   
+			   		@endforeach
+			   			</div>
 
-				<div class="card d-inline-block col-md-3 mx-sm-1 px-1">
-					<div class="card-body align-middle text-mid px-1">
-						<a href="{{route('schema')}}">
-						<img src="{{asset('imgs/RE.png')}}" class="w-100">
-						</a>
-						<div class="container align-middle w-100 text-sub-3">
-						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href=" ">Usuario</a></p>
-						<div class="container d-flex justify-content-center">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/emptyO.png')}}">
-						</div>
-						<div class="dropup mx-auto col-md-7 p-1">
-  								<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
-   								
-  								</button>
- 								 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    								<a class="dropdown-item" href="{{route('mschema')}}"><img  src="{{asset('imgs/register.png')}}"> Modificar</a>
-    								<a class="dropdown-item" href="#"><img src="{{asset('imgs/garbage.png')}}"> Borrar</a>
-   									 
-  								</div>
-								</div>
-						</div>
-					</div>
-				</div>
-					    </div>
-					    <div class="carousel-item text-center">
-				
-				<div class="card d-inline-block col-md-3 mx-sm-1 px-1">
-					<div class="card-body align-middle text-mid px-1">
-						<a href="{{route('schema')}}">
-						<img src="{{asset('imgs/RE.png')}}" class="w-100">
-						</a>
-						<div class="container align-middle w-100 text-sub-3">
-						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href=" ">Usuario</a></p>
-						<div class="container d-flex justify-content-center">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/emptyO.png')}}">
-						</div>
-						<div class="dropup mx-auto col-md-7 p-1">
-  								<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
-   								
-  								</button>
- 								 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    								<a class="dropdown-item" href="{{route('mschema')}}"><img  src="{{asset('imgs/register.png')}}"> Modificar</a>
-    								<a class="dropdown-item" href="#"><img src="{{asset('imgs/garbage.png')}}"> Borrar</a>
-   									 
-  								</div>
-								</div>
-						</div>
-					</div>
-				</div>
 
-				<div class="card d-inline-block col-md-3 mx-sm-1 px-1">
-					<div class="card-body align-middle text-mid px-1">
-						<a href="{{route('schema')}}">
-						<img src="{{asset('imgs/RE.png')}}" class="w-100">
-						</a>
-						<div class="container align-middle w-100 text-sub-3">
-						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href=" ">Usuario</a></p>
-						<div class="container d-flex justify-content-center">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/emptyO.png')}}">
-						</div>
-						<div class="dropup mx-auto col-md-7 p-1">
-  								<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
-   								
-  								</button>
- 								 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    								<a class="dropdown-item" href="{{route('mschema')}}"><img  src="{{asset('imgs/register.png')}}"> Modificar</a>
-    								<a class="dropdown-item" href="#"><img src="{{asset('imgs/garbage.png')}}"> Borrar</a>
-   									 
-  								</div>
-								</div>
-						</div>
-					</div>
-				</div>
 
-				<div class="card d-inline-block col-md-3 mx-sm-1 px-1">
-					<div class="card-body align-middle text-mid px-1">
-						<a href="{{route('schema')}}">
-						<img src="{{asset('imgs/RE.png')}}" class="w-100">
-						</a>
-						<div class="container align-middle w-100 text-sub-3">
-						<a href="{{route('schema')}}">Titulo de Circuito</a>
-						<p class="mb-2">Por <a href=" ">Usuario</a></p>
-						<div class="container d-flex justify-content-center">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/full.png')}}">
-							<img class="w-100 h-75" src="{{asset('imgs/emptyO.png')}}">
-						</div>
-						<div class="dropup mx-auto col-md-7 p-1">
-  								<button class="btn btn-secondary gnw dropdown-toggle p-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{asset('imgs/settings.png')}}">
-   								
-  								</button>
- 								 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    								<a class="dropdown-item" href="{{route('mschema')}}"><img  src="{{asset('imgs/register.png')}}"> Modificar</a>
-    								<a class="dropdown-item" href="#"><img src="{{asset('imgs/garbage.png')}}"> Borrar</a>
-   									 
-  								</div>
-								</div>
-						</div>
-					</div>
-				</div>
-				   		</div>
-
-				  </div>
+				  	</div>
 				  <a class="carousel-control-prev" href="#carouselControl" role="button" data-slide="prev">
 				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				    <span class="sr-only">Previous</span>
@@ -388,7 +191,7 @@
 
 					    	<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -399,7 +202,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -410,7 +213,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -426,7 +229,7 @@
 
 					    <div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -437,7 +240,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -448,7 +251,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -463,7 +266,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -474,7 +277,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -485,7 +288,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -526,7 +329,7 @@
 
 					    	<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -537,7 +340,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -548,7 +351,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -564,7 +367,7 @@
 
 					    <div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -575,7 +378,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -586,7 +389,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -601,7 +404,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -612,7 +415,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">
@@ -623,7 +426,7 @@
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="{{route('schema')}}">
+								<a href="">
 								<img src="{{asset('imgs/RE.png')}}" class="w-100">
 								</a>
 								<div class="container align-middle w-100 text-sub-3">

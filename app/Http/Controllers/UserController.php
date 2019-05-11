@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -87,7 +88,18 @@ class UserController extends Controller
         //
         $user = User::find($id);
 
-        return view('profile', compact('user'));
+        $designs = DB::table('designs')
+        ->join('users','users.id', '=', 'designs.idUser')
+        ->orderBy('designs.created_at', 'desc')
+        ->select('users.id as userid', 'users.username',
+                'designs.id', 'designs.title',
+                'designs.difficulty', 'designs.thumb_path')
+        ->where('users.id', '=', $id)
+        ->get();
+
+        
+
+        return view('profile', compact('user','designs'));
 
     }
 

@@ -7,31 +7,38 @@
 	<div class="card">
 		
 		<div class="card-header">
-			<p class="w-100 text-title bold mb-2">Nombre del diseño</p>
-			<p class="text-sub-2 bold mb-2">Por <a href="{{route('profile', ['id' => auth()->user()->id])}}">Usuario</a></p>
+			<p class="w-100 text-title bold mb-2">{{$design->title}}</p>
+			<p class="text-sub-2 bold mb-2">Por 
+			<a href="{{route('profile', ['id' => "$design->userid"])}}">
+			{{$design->username}}
+			</a>
+			</p>
 			<div class="container d-flex justify-content-end align-self-center">
-					<p class="bold">Rating:</p>
-					<img  src="{{asset('imgs/starBF.png')}}" width="32px" height="32px">
-					<img  src="{{asset('imgs/starBF.png')}}" width="32px" height="32px">
-					<img  src="{{asset('imgs/starBF.png')}}" width="32px" height="32px">
-					<img  src="{{asset('imgs/starBF.png')}}" width="32px" height="32px">
-					<img  src="{{asset('imgs/starBE.png')}}" width="32px" height="32px">
+			<p class="text-sub-1"> <b>{{$deslikes}}</b> Me gusta</p>
 			</div>
 		</div>
 
+		<?php 
+
+		$oneImage = $design->img_path_one;
+		$twoImage = $design->img_path_two;
+		$threeImage = $design->img_path_three;
+		$vidDem = $design->video_path;
+
+		 ?>
+
 		<div class="card-body container d-flex justify-content-center">
-			<a href="{{route('schema')}}">
-			<img src="{{asset('imgs/RE.png')}}" class="w-100">
-			</a>
-			<a href="{{route('schema')}}">
-			<img src="{{asset('imgs/RE.png')}}" class="w-100">
-			</a>
-			<a href="{{route('schema')}}">
-			<img src="{{asset('imgs/RE.png')}}" class="w-100">
-			</a>
-			<a href="{{route('schema')}}">
-			<img src="{{asset('imgs/RE.png')}}" class="w-100">
-			</a>	
+			<button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+			<img src="{{asset("$oneImage")}}" class="w-100">
+			</button>
+
+			<button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+			<img src="{{asset("$twoImage")}}" class="w-100">
+			</button>
+			
+			<button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+			<img src="{{asset("$threeImage")}}" class="w-100">
+			</button>	
 		</div>	
 
 		<div class="card">
@@ -40,23 +47,49 @@
 			<div class="card-body">
 				<h2>Detalles</h2>
 				<hr>
-				<p><b>Dificultad:</b> Media</p>
-				<p><b>Componente: </b> Motores lineales</p>
-				<p>Usado para la calibracion de un motor lineal de actuación rápida. Consite en la union de NSE-4543 con un MTU-566 para generar el bias de calibración</p>
+				<p><b>Dificultad:</b>
+
+					@switch($design->difficulty)
+									@case(1)
+									    Principiante
+									    @break
+
+									@case(2)
+									    Avanzado
+									    @break
+
+									@case(3)
+									    Experto
+									    @break
+
+									@case(4)
+										Imposible
+										@break
+								@endswitch
+
+				</p>
+
+				<p>{{$design->description}}</p>
 
 				<div class="container container-fluid">
 					<p class="text-sub-1 bold">Video de demostración</p>
 
-					<video>
-						
+					<video class="text-center w-100 h-100" controls>
+						<source src="{{asset("$vidDem")}}" type="video/MP4">
 					</video>
 				</div>
 
 				<div class="container">
-					<p>Publicado el: <b>12-12-2049</b></p>
+					<p>Publicado el: <b>{{$design->created_at}}</b></p>
+					@auth
 					<button class="btn btn-danger rnw float-right mx-1"><img src="{{asset('imgs/danger.png')}}"> Reportar</button>
-					<a href="{{route('mschema')}}"><button class="btn btn-info cnw float-right mx-1"><img src="{{asset('imgs/settings.png')}}"> Modificar</button></a>
+					@if($design->userid == auth()->user()->id)
+					<a href="{{route('mschema', ['id' => "$design->id"])}}"><button class="btn btn-info cnw float-right mx-1"><img src="{{asset('imgs/settings.png')}}"> Modificar</button></a>
 					<button class="btn btn-danger rnw float-right mx-1"><img src="{{asset('imgs/garbage.png')}}"> Borrar</button>
+					@endif
+					<button class="btn btn-primary float-left bnw w-25">
+					<img  src="{{asset('imgs/like.png')}}">Me gusta</button>
+					@endauth
 				</div>
 			</div>
 		</div>

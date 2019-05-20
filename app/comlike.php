@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class comlike extends Model
 {
+	protected $fillable = [
+	'idComment', 'idUser'
+	];
     //
     public function user()
     {

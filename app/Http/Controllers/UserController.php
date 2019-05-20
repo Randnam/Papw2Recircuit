@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\follow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -71,7 +72,7 @@ class UserController extends Controller
             'is_admin' => "No"
             ]);
 
-        return view('main');
+        return redirect()->route('main');
 
 
         
@@ -88,6 +89,8 @@ class UserController extends Controller
         //
         $user = User::find($id);
 
+        if(!empty($user)){
+
         $designs = DB::table('designs')
         ->join('users','users.id', '=', 'designs.idUser')
         ->orderBy('designs.created_at', 'desc')
@@ -97,9 +100,29 @@ class UserController extends Controller
         ->where('users.id', '=', $id)
         ->get();
 
+        $followers = DB::table('follows')->where('idUserOne', '=', $id)->count();
+
+        $secCheck = 0;
+
+        if(isset(auth()->user()->id)){
+
+        $secCheck = DB::table('follows')->where([
+            ['idUserOne', '=', $id],
+            ['idUserTwo', '=', auth()->user()->id]
+            ])->count();
+
+
+
+        }
+
+        $followings = DB::select('call getFollowers(?)', [$id]);
+
         
 
-        return view('profile', compact('user','designs'));
+        return view('profile', compact('user','designs','followers','secCheck','followings'));
+    }else{
+        return redirect()->route('main')->with('error', 'El usuario no existe');
+    }
 
     }
 
@@ -118,7 +141,7 @@ class UserController extends Controller
 
             return view('settings', compact('user'));
         }else{
-            return view('main');
+            return redirect()->route('main')->with('error', 'Acceso denegado');
         }
         
       
@@ -229,4 +252,50 @@ class UserController extends Controller
     {
         //
     }
+
+    public function follow(Request $request){
+
+        //
+        $secCheck = DB::table('follows')->where([
+            ['idUserOne', '=', $request->following],
+            ['idUserTwo', '=', $request->follower]
+            ])->count();
+
+        $followers = 0;
+        
+        if($secCheck == 0 || empty($secCheck)){
+
+            follow::create([
+                'idUserOne' => $request->following,
+                'idUserTwo' => $request->follower
+                ]);
+
+            $followers = DB::table('follows')->where('idUserOne', '=', $request->following)->count();
+
+        }else{
+
+            $followers = DB::table('follows')->where('idUserOne', '=', $request->following)->count();
+        }
+
+
+
+        return $followers;
+
+    }
+
+    public function unfollow(Request $request){
+
+        //
+        follow::where([
+            ['idUserOne', '=', $request->following],
+            ['idUserTwo', '=', $request->follower]
+            ])->delete();
+
+        $followers = DB::table('follows')->where('idUserOne', '=', $request->following)->count();
+
+        return $followers;
+
+        
+    }
+
 }

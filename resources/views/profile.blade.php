@@ -18,7 +18,7 @@
 					<div class="card col-md-4 d-inline-block">
 						<div class="card-body">
 				
-						<img class="w-100" src="{{asset("$user->avatar_path")}}">
+						<img class="w-100 rounded" src="{{asset("$user->avatar_path")}}">
 
 						</div>	
 					</div>
@@ -34,7 +34,7 @@
 						@endif
 						</p>
 						<p>Miembro desde el: {{$user->created_at}}</p>
-						<p><b>0</b> Seguidores</p>
+						<p><b id="followCount">{{$followers}}</b> Seguidores</p>
 
 						<p>Acerca de mi:</p>
 
@@ -44,7 +44,19 @@
 					@auth
 
 						@if(auth()->user()->id != request()->route('id'))
-						<a href=""><button class="btn btn-info pnw"> <img  src="{{asset('imgs/add-friend.png')}}">Seguir</button></a>
+
+						@if($secCheck == 0)
+						<button id="followUser" class="btn btn-info pnw"> <img  src="{{asset('imgs/add-friend.png')}}">Seguir</button>
+
+						<button id="unfollowUser" class="btn btn-info rnw" style="display:none;"> <img  src="{{asset('imgs/add-friend.png')}}">Dejar de seguir</button>
+
+						@else
+						<button id="unfollowUser" class="btn btn-info rnw"> <img  src="{{asset('imgs/add-friend.png')}}">Dejar de seguir</button>
+
+						<button id="followUser" class="btn btn-info pnw" style="display:none;"> <img  src="{{asset('imgs/add-friend.png')}}">Seguir</button>
+
+						@endif
+
 						@endif 
 
 						@if(auth()->user()->id == request()->route('id'))
@@ -64,7 +76,7 @@
 
 			
 				@if(Session::has('success'))
-				<div class="card-body py-2 bg-success rounded">
+				<div id="success-board" class="card-body py-2 bg-success rounded">
 					<span class="text-white">{{Session::get('success')}}</span>
 				</div>	
 				@endif
@@ -464,5 +476,119 @@
 
 
 </div>
+
+@endsection
+
+@section('scripts')
+
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $("#followUser").click(function() {
+
+        	$("#followUser").hide("fast", function() {});
+
+
+        	var following = {{request()->route('id')}};
+        	@auth
+        	var follower = {{auth()->user()->id}} ;
+        	@endauth
+
+            $.ajax({
+            	type:'POST',
+            	url:'{{route('follow')}}',
+            	async : true,
+            	data:{
+            		_token: '{{csrf_token()}}',
+            		following: following,
+            		follower: follower
+            	},
+            	cache: false,
+            	success: function(data) {
+            		
+            		$("#followCount").empty();
+            		$("#followCount").append(data);
+
+            		
+
+            		$("#unfollowUser").show("fast",function() {});
+
+            	
+
+
+            	},
+            	 fail: function(xhr, textStatus, errorThrown){
+       				alert('request failed');
+   				}
+
+            });
+
+
+
+
+
+        });
+      
+  
+        //
+
+        $("#unfollowUser").click(function() {
+
+        	$("#unfollowUser").hide("fast", function() {});
+
+        	var following = {{request()->route('id')}};
+
+        	@auth
+        	var follower = {{auth()->user()->id}} ;
+
+        	@endauth
+
+            $.ajax({
+            	type:'POST',
+            	url:'{{route('unfollow')}}',
+            	async : true,
+            	data:{
+            		_token: '{{csrf_token()}}',
+            		following: following,
+            		follower: follower
+            	},
+            	cache: false,
+            	success: function(data) {
+            		
+            		$("#followCount").empty();
+            		$("#followCount").append(data);
+
+            		
+
+            		$("#followUser").show("fast",function() {});
+
+            	
+
+
+            	},
+            	 fail: function(xhr, textStatus, errorThrown){
+       				alert('request failed');
+   				}
+
+            });
+
+
+        });
+
+
+        //
+
+        $("success-board").click(function() {
+
+        	$("success-board").fadeOut();
+
+
+        });
+
+        //
+    });
+
+  </script>
 
 @endsection

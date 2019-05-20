@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class comment extends Model
 {
+
+    protected $fillable = [
+    'idUser', 'idDesign', 'title', 'content'
+    ];
     //
     public function comlike()
     {

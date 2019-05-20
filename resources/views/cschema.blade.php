@@ -42,8 +42,8 @@
 				<label class="text-sub-2 col-md-4">Imagenes:</label>
 				<div class="container col-md-5">
 				<input class="ml-1 my-1" type="file" name="img_path_one" required>
-				<input class="ml-1 my-1" type="file" name="img_path_two">
-				<input class="ml-1 my-1" type="file" name="img_path_three">
+				<input class="ml-1 my-1" type="file" name="img_path_two" required>
+				<input class="ml-1 my-1" type="file" name="img_path_three" required>
 				</div>
 				</div>
 

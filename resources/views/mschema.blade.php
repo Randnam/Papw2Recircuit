@@ -10,34 +10,46 @@
 		</div>
 
 		<div class="card-body">
-			<form class="form-group px-2" method="POST" action="">
+			<form class="form-group px-2" method="POST" action="mschema" enctype="multipart/form-data" >
+			@csrf
 				<div class="row mb-2">
 				<label class="text-sub-2 col-md-4">Titulo del Diseño: </label>
-				<input class="ml-2 col-md-5 form-control" type="text" name="title">
+				<input class="ml-2 col-md-5 form-control" value="{{$design->title}}" type="text" name="title" required>
 				</div>
 
 				<div class="row mb-2">
 				<label class="text-sub-2 col-md-4">Detalles:</label>
-				<input class="ml-2 col-md-5 form-control" type="text" name="desc">
+				<input class="ml-2 col-md-5 form-control" value="{{$design->description}}" type="text" name="description" required>
 				</div>
+
 				<div class="row mb-2">
-				<label class="text-sub-2 col-md-4">Thumbnail:</label>
-				<input class="ml-1 col-md-5" type="file" name="desc">
+					<label class="text-sub-2 col-md-4">Dificultad: </label>
+					<select class="ml-2 col-md-5 form-control" name="difficulty">
+
+					<option value="1" @if($design->difficulty == 1) selected @endif >Principiante</option>
+					<option value="2" @if($design->difficulty == 2) selected @endif >Avanzado</option>
+					<option value="3" @if($design->difficulty == 3) selected @endif >Experto</option>
+					<option value="4" @if($design->difficulty == 4) selected @endif>Imposible</option>
+					</select>
+				</div>
+
+				<div class="row mb-2">
+				<label class="text-sub-2 col-md-4">Thumbnail: </label>
+				<input class="ml-1 col-md-5" type="file" name="thumb_path">
 				</div>
 				
 				<div class="row mb-2">
-				<label class="text-sub-2 col-md-4">Imagenes (4 minimo):</label>
+				<label class="text-sub-2 col-md-4">Imagenes: </label>
 				<div class="container col-md-5">
-				<input class="ml-1 my-1" type="file" name="desc">
-				<input class="ml-1 my-1" type="file" name="desc">
-				<input class="ml-1 my-1" type="file" name="desc">
-				<input class="ml-1 my-1" type="file" name="desc">
+				<input class="ml-1 my-1" type="file" name="img_path_one">
+				<input class="ml-1 my-1" type="file" name="img_path_two">
+				<input class="ml-1 my-1" type="file" name="img_path_three">
 				</div>
 				</div>
 
 				<div class="row mb-2">
 				<label class="text-sub-2 col-md-4">Video:</label>
-				<input class="ml-1 col-md-5" type="file" name="desc">
+				<input class="ml-1 col-md-5" type="file" name="video_path">
 				</div>
 
 				<div class="container d-flex justify-content-center">

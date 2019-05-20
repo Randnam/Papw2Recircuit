@@ -14,7 +14,7 @@
 			</a>
 			</p>
 			<div class="container d-flex justify-content-end align-self-center">
-			<p class="text-sub-1"> <b>{{$deslikes}}</b> Me gusta</p>
+			<p class="text-sub-1"> <b id="deslikesCont">{{$deslikes}}</b> Me gusta</p>
 			</div>
 		</div>
 
@@ -87,31 +87,60 @@
 					<a href="{{route('mschema', ['id' => "$design->id"])}}"><button class="btn btn-info cnw float-right mx-1"><img src="{{asset('imgs/settings.png')}}"> Modificar</button></a>
 					<button class="btn btn-danger rnw float-right mx-1"><img src="{{asset('imgs/garbage.png')}}"> Borrar</button>
 					@endif
-					<button class="btn btn-primary float-left bnw w-25">
+
+					@if($design->userid != auth()->user()->id)
+
+					@if($secCheck == 0)
+					<button id="likeDesign" class="btn btn-primary float-left bnw w-25">
 					<img  src="{{asset('imgs/like.png')}}">Me gusta</button>
+
+					<button id="dislikeDesign" class="btn btn-primary float-left rnw w-25" style="display:none;">
+					<img  src="{{asset('imgs/like.png')}}">Ya no me gusta :c</button>
+					@else
+					
+
+					<button id="dislikeDesign" class="btn btn-primary float-left rnw w-25" >
+					<img  src="{{asset('imgs/like.png')}}">Ya no me gusta :c</button>
+
+
+					<button id="likeDesign" class="btn btn-primary float-left bnw w-25" style="display:none;">
+					<img  src="{{asset('imgs/like.png')}}">Me gusta</button>
+					
+					@endif
+
+					@endif
+
 					@endauth
 				</div>
 			</div>
 		</div>
 
+		@if(Session::has('success'))
+		<div class="card-body py-2 bg-success rounded">
+			<span class="text-white">{{Session::get('success')}}</span>
+		</div>	
+		@endif
+
 		<div class="card">
 			<div class="card-header cst-blue-bg wht-text bold">
 
-				<p class="text-sub-1 mb-2"> Comentarios (0) </p>
+				<p class="text-sub-1 mb-2"> Comentarios (<b id="commentAmount">0</b>) </p>
 
 			</div>
 			<div class="card-body">
 
 				<div class="card mb-3">
 					<div class="card-header bold"> Deja tu comentario</div>
+
+					@auth
 					<div class="card-body d-inline-block">
 						<img class="col-sm-2 h-25" src="{{asset('imgs/RE.png')}}">
-						<form class="w-100 container-fluid">
+						<div class="w-100 container-fluid">
 								<div class="form-group row d-flex justify-content-start w-100">
 								<label class="col-form-label text-md-right" >Titulo:</label> 
 
 								<div class="w-100">
-								<input class="w-100" type="text" name="title"> 
+								<input class="w-100" type="text" id="title" name="title"> 
 								</div>
 
 								</div>
@@ -120,58 +149,33 @@
 								<label class="col-form-label text-md-right" >Mensaje:</label> 
 
 								<div class="w-100">
-								<textarea class="w-100" name="message" cols="60" rows="4"></textarea>
+								<textarea class="w-100" id="content" name="message" cols="60" rows="4"></textarea>
 								</div>
 
 								</div>
 								<div class="d-flex justify-content-end">
-									<button class="btn btn-primary bnw" type="submit">
+									<button class="btn btn-primary bnw" id="subComment">
 										<img src="{{asset('imgs/check.png')}}"> Comentar
 									</button>
 								</div>
-						</form>
+						</div>
 					</div>
+					@else
+
+					<p class="bold ml-5 mt-3"><a href="{{route('login')}}">Inicia sesión</a> para dejar un comentario</p>
+
+					@endauth
+
 				</div>
 				<hr>
-				<div class="card">
-
-					<div class="card-body d-inline-block ">
-
-						<div class="card col-md-3 d-inline-block">
-						<div class="card-body text-center">
-				
-						<img class="w-100" src="{{asset('imgs/RE.png')}}">		
-						<a class="text-sub-3 mx-auto" href="{{route('profile', ['id' => auth()->user()->id])}}" >Usuario</a>
-						<p class="text-sub-3 mx-auto bold">ROL DE USUARIO</p>
-						
-						</div>
-
-						</div>
-
-						<div class="card container-fluid px-0">
-							<div class="card-header text-sub-2"><b>Titulo</b>
-							<p class="float-right"><b>1</b> Me gusta</p>
-							</div>
-							<div class="card-body">
-								<p class="text-sub-3">
-								Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-								</p>
-							</div>
-							<div class="card-footer text-muted d-inline-block">
-    						<p class="mb-0 w-75 bold">Publicado el 20-10-2049 20:00:32</p>
-
-    						<button class="btn btn-primary pnw w-25"><img  src="{{asset('imgs/add-friend.png')}}">Seguir</button>
-    						<button class="btn btn-primary bnw w-25">
-    						<img  src="{{asset('imgs/like.png')}}">Me gusta</button>
-    						<button class="btn btn-danger rnw w-25 ml-1">
-							<img  src="{{asset('imgs/garbage.png')}}"> Borrar</button>
-  							</div>
-						</div>
-
-					</div>
+				<div id="commSection" class="card">
 
 
-			</div>
+
+
+
+
+				</div>
 		</div>
 
 
@@ -179,5 +183,290 @@
 
 </div>
 </div>
+
+@endsection
+
+@section('scripts')
+
+<script type="text/javascript">
+		
+	$(document).ready(function() {
+
+		Reload();
+
+		 $("#likeDesign").click(function() {
+
+        	$("#likeDesign").hide("fast", function() {});
+
+        	var idDesign = {{request()->route('id')}};
+
+        	@auth
+        	var idUser = {{auth()->user()->id}} ;
+        	@endauth
+
+            $.ajax({
+            	type:'POST',
+            	url:'{{route('likeDesign')}}',
+            	async : true,
+            	data:{
+            		_token: '{{csrf_token()}}',
+            		idDesign: idDesign,
+            		idUser: idUser
+            	},
+            	cache: false,
+            	success: function(data) {
+            		
+            		$("#deslikesCont").empty();
+            		$("#deslikesCont").append(data);
+
+            		
+
+            		$("#dislikeDesign").show("fast",function() {});
+
+            	
+
+
+            	},
+            	 fail: function(xhr, textStatus, errorThrown){
+       				alert('request failed');
+   				}
+
+            });
+
+
+        });
+      
+		///
+
+		$("#dislikeDesign").click(function() {
+
+        	$("#dislikeDesign").hide("fast", function() {});
+
+        	var idDesign = {{request()->route('id')}};
+
+        	@auth
+        	var idUser = {{auth()->user()->id}} ;
+        	@endauth
+
+            $.ajax({
+            	type:'POST',
+            	url:'{{route('dislikeDesign')}}',
+            	async : true,
+            	data:{
+            		_token: '{{csrf_token()}}',
+            		idDesign: idDesign,
+            		idUser: idUser
+            	},
+            	cache: false,
+            	success: function(data) {
+            		
+            		$("#deslikesCont").empty();
+            		$("#deslikesCont").append(data);
+
+            		
+
+            		$("#likeDesign").show("fast",function() {});
+
+            	
+
+
+            	},
+            	 fail: function(xhr, textStatus, errorThrown){
+       				alert('request failed');
+   				}
+
+            });
+
+
+        });
+
+        ///
+
+        $("#subComment").click(function() {
+
+
+        	var idDesign = {{request()->route('id')}};
+
+        	@auth
+        	var idUser = {{auth()->user()->id}} ;
+        	@endauth
+
+            $.ajax({
+            	type:'POST',
+            	url:'{{route('comment')}}',
+            	async : true,
+            	data:{
+            		_token: '{{csrf_token()}}',
+            		idDesign: idDesign,
+            		idUser: idUser,
+            		title: $("#title").val(),
+            		content: $("#content").val()
+            	},
+            	cache: false,
+            	success: function(data) {
+          	
+          			$("#title").val("")
+          			$("#content").val("")
+
+          			Reload();
+
+            	
+            	},
+            	 fail: function(xhr, textStatus, errorThrown){
+       				alert('request failed');
+   				}
+
+            });
+
+
+        });
+
+        ///
+
+        function Reload(){
+
+        	var idDesign = {{request()->route('id')}};
+
+        	$.ajax({
+            	type:'POST',
+            	url:'{{route('getComment')}}',
+            	async : true,
+            	data:{
+            		_token: '{{csrf_token()}}',
+            		idDesign: idDesign,
+            	},
+            	cache: false,
+            	success: function(data) {
+
+
+          			$("#commSection").empty();
+
+          			var counter = 0;
+          			
+
+          			data.forEach(function(element) {
+  
+
+          			
+          				$("#commSection").append(
+
+          					element
+
+          					);
+          			
+          			counter++;
+
+          			});
+
+          			
+
+          			if(counter == 0){
+          			$("#commSection").append("<p class='mt-3 mb-3 ml-5 text-sub-2'> Aun no hay comentarios. Se el primero. </p>");
+          			}else{
+
+          			$("#commentAmount").empty();
+          			$("#commentAmount").append(counter);
+          			}
+            	
+            	},
+            	 fail: function(xhr, textStatus, errorThrown){
+       				alert('request failed');
+   				}
+
+            });
+
+
+
+        }
+
+        ///
+
+         $("body").on('click','.deleteCom', function() {
+
+        	var idComment = $(this).parent().find('input').val();
+
+        	@auth
+        	var idUser = {{auth()->user()->id}} ;
+        	@endauth
+
+        	$(this).hide();
+
+        	$(this).parents('.comCard').hide();
+
+            $.ajax({
+            	type:'POST',
+            	url:'{{route('deleteComment')}}',
+            	async : true,
+            	data:{
+            		_token: '{{csrf_token()}}',
+            		idComment: idComment,
+            		idUser: idUser,
+
+            	},
+            	cache: false,
+            	success: function(data) {
+          	
+          			if(data == "complete"){
+          			Reload();
+            		}
+            	},
+            	 fail: function(xhr, textStatus, errorThrown){
+       				alert('request failed');
+   				}
+
+            });
+
+
+        });
+
+        ///
+
+        $("body").on('click','.likeCom',function() {
+
+        	var idComment = $(this).parent().find('input').val();
+
+        	@auth
+        	var idUser = {{auth()->user()->id}} ;
+        	@endauth
+
+        	$(this).hide();
+
+            $.ajax({
+            	type:'POST',
+            	url:'{{route('likeComment')}}',
+            	async : true,
+            	data:{
+            		_token: '{{csrf_token()}}',
+            		idComment: idComment,
+            		idUser: idUser,
+            	},
+            	cache: false,
+            	success: function(data) {
+          	
+          			if(data == "complete"){
+          			Reload();
+            		}
+            	},
+            	 fail: function(xhr, textStatus, errorThrown){
+       				alert('request failed');
+   				}
+
+            });
+
+
+
+
+        });
+
+		///
+	});
+
+
+
+
+
+
+</script>
+
 
 @endsection

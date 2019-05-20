@@ -102,7 +102,7 @@
 				<p>Para adentrarte al repositorio más grande de circuitos</p>
 		</div>
 		<div class="card-body">
-			<form method="POST" action="{{ route('register') }}">
+			<form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
 			@csrf
 
 				<div class="form-group row">

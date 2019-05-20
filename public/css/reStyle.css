@@ -33,8 +33,8 @@ body {
 
 .circuit-bg{
 	background-image: url('../imgs/B3.jpg');
-	background-repeat: repeat-y;
-	background-size: 100%;
+	background-repeat: no-repeat;
+	background-size: 150%;
 }
 
 .circuit-bg-lnd{
@@ -187,4 +187,9 @@ body {
   .expand_bar {
     width:16rem !important;
   }
+}
+
+.selective:hover{
+
+	cursor: pointer;
 }

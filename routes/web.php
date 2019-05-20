@@ -43,7 +43,7 @@ Route::post('/getComment', 'SchemaController@getComment')->name('getComment');
 
 
 
-Route::get('/search', 'mainControl@search')->name('search');
+Route::post('/search', 'mainControl@search')->name('search');
 
 Route::get('/admin', 'mainControl@admin')->name('admin');
 

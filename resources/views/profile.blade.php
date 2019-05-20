@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('title')
+Perfil de {{$user->username}} - Recircuit
+@endsection
+
 @section('content')
 
 <div class="container">
@@ -191,7 +195,7 @@
 
 			<div class="card mb-1">
 				<div class="card-header form-inline d-flex justify-content-between cst-blue-bg wht-text">
-				<h4>Seguidores del Usuario</h4>
+				<h4>Usuarios siguiendo</h4>
 				
 				</div>
 
@@ -199,119 +203,42 @@
 					<div class="container mb-1">
 					<div id="carouselControl2" class="carousel slide" data-ride="carousel">
 				  	<div class="carousel-inner">
-					    <div class="carousel-item text-center active">
+						<div class="carousel-item text-center active">
+					  	<?php $ise = 1 ?>
+					  	@foreach($followings as $userse)
 
-					    	<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
+					  	<?php $tImag = $userse->avatar_path ?>
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
+							<a href="{{route('profile', ['id' => "$userse->id"])}}">
+							<img src="{{asset("$tImag")}}" class="w-100">
+							</a>
+							<div class="container align-middle w-100 text-sub-3">
+							<a href="{{route('profile', ['id' => "$userse->id"])}}">{{$userse->username}}</a>
+							</div>
+							<div class="container align-middle w-100 text-sub-3">
+							<a href="{{route('profile', ['id' => "$userse->id"])}}">{{ $userse->name }} {{ $userse->last_name }}</a>
+							</div>
+							<div class="container align-middle w-100 text-sub-3">
+								<p>{{$userse->followers}} Seguidores</p>
+							</div>
+
 							</div>
 						</div>
 
-						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-				
-			
+
+					  	@if($ise == 3)
 					    </div>
-					    <div class="carousel-item text-center">
-					    
+					    <?php $ise = 0 ?>
+					     <div class="carousel-item text-center">
+					    @else
+					    	<?php $ise++ ?>
+						@endif
 
-					    <div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-				
-					    </div>
-					    <div class="carousel-item text-center">
-						
-
-						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-				
+					  	@endforeach
 				   		</div>
-
-				  </div>
+				 	</div>
 				  <a class="carousel-control-prev" href="#carouselControl2" role="button" data-slide="prev">
 				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				    <span class="sr-only">Previous</span>
@@ -329,7 +256,7 @@
 
 			<div class="card mb-1">
 				<div class="card-header form-inline d-flex justify-content-between cst-blue-bg wht-text">
-				<h4>Usuarios siguiendo</h4>
+				<h4>Seguidores del Usuario</h4>
 				
 				</div>
 
@@ -337,119 +264,43 @@
 					<div class="container mb-1">
 					<div id="carouselControl3" class="carousel slide" data-ride="carousel">
 				  	<div class="carousel-inner">
-					    <div class="carousel-item text-center active">
+   						<div class="carousel-item text-center active">
+					  	<?php $ise = 1 ?>
+					  	@foreach($followen as $userse)
 
-					    	<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
+					  	<?php $tImag = $userse->avatar_path ?>
 
 						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
 							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
+							<a href="{{route('profile', ['id' => "$userse->id"])}}">
+							<img src="{{asset("$tImag")}}" class="w-100">
+							</a>
+							<div class="container align-middle w-100 text-sub-3">
+							<a href="{{route('profile', ['id' => "$userse->id"])}}">{{$userse->username}}</a>
+							</div>
+							<div class="container align-middle w-100 text-sub-3">
+							<a href="{{route('profile', ['id' => "$userse->id"])}}">{{ $userse->name }} {{ $userse->last_name }}</a>
+							</div>
+							<div class="container align-middle w-100 text-sub-3">
+								<p>{{$userse->followers}} Seguidores</p>
+							</div>
+
 							</div>
 						</div>
 
-						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-				
-			
+
+					  	@if($ise == 3)
 					    </div>
-					    <div class="carousel-item text-center">
-					    
+					    <?php $ise = 0 ?>
+					     <div class="carousel-item text-center">
+					    @else
+					    	<?php $ise++ ?>
+						@endif
 
-					    <div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-				
-					    </div>
-					    <div class="carousel-item text-center">
-						
-
-						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="card col-md-3 mx-sm-1 px-1 d-inline-block">
-							<div class="card-body align-middle text-mid px-1">
-								<a href="">
-								<img src="{{asset('imgs/RE.png')}}" class="w-100">
-								</a>
-								<div class="container align-middle w-100 text-sub-3">
-								<a href=" ">Usuario</a>
-								</div>
-							</div>
-						</div>
-				
+					  	@endforeach
 				   		</div>
 
-				  </div>
+				  	</div>
 				  <a class="carousel-control-prev" href="#carouselControl3" role="button" data-slide="prev">
 				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				    <span class="sr-only">Previous</span>

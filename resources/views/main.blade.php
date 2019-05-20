@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('title')
+Recircuit 
+@endsection
+
 @section('content')
 
 <div class="container">
@@ -29,7 +33,7 @@
 						<a href="{{ route('schema', ['id' => "$design->id"]) }}">
 						<img src="{{asset("$tImage")}}" class="w-100 h-100">
 						</a>
-						<div class="container align-middle mt-5 w-100 text-sub-3">
+						<div class="container align-middle mt-3 w-100 text-sub-3">
 						<a href="{{ route('schema', ['id' => "$design->id"]) }}">{{$design->title}}</a>
 						<p class="mb-2">Por <a href="{{route('profile', ['id' => "$design->userid"])}}">{{$design->username}}</a></p>
 						<div class="container d-flex justify-content-center">

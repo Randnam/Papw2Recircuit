@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\User;
 use App\follow;
 use Illuminate\Http\Request;
@@ -60,7 +61,7 @@ class UserController extends Controller
 
 
         
-        User::create([
+        $user = User::create([
             'name' => $request->input('name'),
             'last_name' => $request->input('last_name'),
             'username' => $request->input('username'),
@@ -71,6 +72,8 @@ class UserController extends Controller
             'about_me' => "Hola soy nuevo",
             'is_admin' => "No"
             ]);
+
+        Auth::login($user);
 
         return redirect()->route('main');
 
@@ -117,9 +120,9 @@ class UserController extends Controller
 
         $followings = DB::select('call getFollowers(?)', [$id]);
 
-        
+        $followen = DB::select('call getFollowings(?)', [$id]);
 
-        return view('profile', compact('user','designs','followers','secCheck','followings'));
+        return view('profile', compact('user','designs','followers','secCheck','followings','followen'));
     }else{
         return redirect()->route('main')->with('error', 'El usuario no existe');
     }

@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('title')
+{{$design->title}} - Recircuit
+@endsection
+
 @section('content')
 
 <div class="container">

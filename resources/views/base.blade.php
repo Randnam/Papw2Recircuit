@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
 
-  <title>Recircuit</title>
+  <title>@yield('title')</title>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
@@ -20,6 +20,64 @@
 
   @yield('scripts')
  
+
+
+ <script type="text/javascript">
+   
+ function filter_bar() {
+   // body...
+
+   var checker = $("select[name=philter]").val();
+
+
+   switch(checker){
+    case "user":
+
+      $("input[name=toSearch]").attr("placeholder", "Buscar usuarios");
+      
+       $("input[name=dateStart").hide();
+       $("input[name=dateEnd]").hide();
+       $("input[name=toSearch]").show();
+       $("select[name=dificulty]").hide();
+
+    break;
+    case "design":
+      $("input[name=toSearch]").attr("placeholder", "Buscar diseños");
+
+       $("input[name=dateStart").hide();
+       $("input[name=dateEnd]").hide();
+       $("input[name=toSearch]").show();
+       $("select[name=dificulty]").hide();
+
+    break;
+    case "date":
+
+       $("input[name=toSearch]").hide();
+       $("input[name=dateStart").show();
+       $("input[name=dateEnd]").show();
+       $("select[name=dificulty]").hide();
+
+
+    break;
+    case "dificulty":
+
+       $("select[name=dificulty]").show();
+       $("input[name=dateStart").hide();
+       $("input[name=dateEnd]").hide();
+       $("input[name=toSearch]").hide();
+
+    break;
+
+
+   }
+
+
+   //
+ }
+
+
+
+ </script>
 
 </head>
 <body class="circuit-bg">
@@ -35,12 +93,25 @@
         <a class="nav-link" href="{{route('main')}}">Inicio <span class="sr-only">(current)</span></a>
       </li>
        <li class="nav-item ml-md-5 md-0">
-        <form class="form-inline my-0 my-lg-0" action="{{route('search')}}" method="GET">
-
-        <input class="form-control mr-sm-1  expand_bar" type="text" placeholder="Buscar" aria-label="Buscar">
+        <form class="form-inline my-0 my-lg-0" action="{{route('search')}}" method="POST">
+        @csrf
+        <input class="form-control mr-sm-1  expand_bar" type="text" placeholder="Buscar usuario" aria-label="Buscar" name="toSearch">
+        <input title="Fecha inicio" class="form-control mr-sm-1" style="display:none;" type="date" name="dateStart">
+        <input title="Fecha fin" class="form-control mr-sm-1" style="display:none;" type="date" name="dateEnd">
+        <select class="form-control mr-sm-1 expand_bar" title="Dificultad" name="dificulty" style="display:none;">
+          <option value="1">Principiante</option>
+          <option value="2">Avanzado</option>
+          <option value="3">Experto</option>
+          <option value="4">Imposible</option>
+        </select>
+        <select class="form-control mr-sm-1" name="philter" onchange="filter_bar()">
+          <option value="user">Usuarios</option>
+          <option value="design">Diseños</option>
+          <option value="date">Fechas</option>
+          <option value="dificulty">Dificultad</option>
+        </select>
         <a href="{{route('search')}}"><button class="btn btn-outline-success my-2 my-sm-0"><span>
         <img src="{{asset('imgs/finder.png')}}"></span> Buscar</button></a>
-
         </form>
       </li> 
     </ul>
@@ -99,7 +170,7 @@
 
     </div>
 
-  </footer>
+</footer>
 
 </body>
 </html>

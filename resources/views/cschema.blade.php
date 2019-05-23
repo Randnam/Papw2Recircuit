@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('title')
+Crear diseño - Recircuit
+@endsection
+
 @section('content')
 
 <div class="container">

@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('title')
+Modificaciones de {{$user->name}} - Recircuit
+@endsection
+
 @section('content')
 
 <div class="container">

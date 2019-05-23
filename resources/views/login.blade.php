@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('title')
+Login - Recircuit
+@endsection
+
 @section('content')
 <div class="container csm-m-xl">
     <div class="row justify-content-center">

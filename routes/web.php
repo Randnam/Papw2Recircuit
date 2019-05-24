@@ -31,10 +31,14 @@ Route::get('/cschema', 'SchemaController@create')->name('cschema')->middleware('
 Route::post('/cschema', 'SchemaController@store');
 Route::get('/mschema/{id}', 'SchemaController@edit')->name('mschema')->middleware('auth');
 Route::post('/mschema/{id}', 'SchemaController@update');
+Route::get('/dschema/{id}', 'SchemaController@destroy')->name('dschema')->middleware('auth');
+
 
 
 Route::post('/likeDesign', 'SchemaController@likeDesign')->name('likeDesign')->middleware('auth');
 Route::post('/dislikeDesign', 'SchemaController@dislikeDesign')->name('dislikeDesign')->middleware('auth');
+Route::post('/reportDesign','SchemaController@reportDesign')->name('reportDesign')->middleware('auth');
+
 
 Route::post('/comment', 'SchemaController@comment')->name('comment')->middleware('auth');
 Route::post('/likeComment', 'SchemaController@likeComment')->name('likeComment')->middleware('auth');
@@ -45,7 +49,8 @@ Route::post('/getComment', 'SchemaController@getComment')->name('getComment');
 
 Route::post('/search', 'mainControl@search')->name('search');
 
-Route::get('/admin', 'mainControl@admin')->name('admin');
+Route::get('/admin', 'mainControl@admin')->name('admin')->middleware('auth');
+Route::post('/getReports', 'mainControl@getReports')->name('getReports')->middleware('auth');
 
 Route::get('/register', 'UserController@create')->name('register')->middleware('guest');
 Route::post('/register', 'UserController@store');

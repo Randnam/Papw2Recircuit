@@ -56,6 +56,10 @@ body {
 	color: white;
 }
 
+.blk-text{
+	color:black;
+}
+
 .cst-blue-bg{
 	background-color: #015eb5;
 }
@@ -180,6 +184,10 @@ body {
 	 padding-top: 3.75rem !important;
 }
 
+.pt-59{
+	 padding-top: 3.70rem !important;
+}
+
 .expand_bar{
 	width:30rem !important;
 }
@@ -192,4 +200,22 @@ body {
 .selective:hover{
 
 	cursor: pointer;
+}
+
+.carousel-caption:after {
+  content:"";
+  display:block;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.7);
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }

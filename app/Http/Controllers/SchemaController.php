@@ -7,6 +7,7 @@ use App\User;
 use App\comment;
 use App\deslike;
 use App\comlike;
+use App\desreport;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -126,7 +127,7 @@ class SchemaController extends Controller
         ->get();
 
 
-        if(!empty($designR)){
+        if(!empty($designR[0])){
 
         $design = $designR[0];
 
@@ -344,7 +345,22 @@ class SchemaController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $check = design::find($id);
+
+
+
+        if($check->idUser == auth()->user()->id){
+         DB::select('call PurgeDesign(?)',[$id]);
+
+         return redirect()->route('profile', ['id' => auth()->user()->id])->with('success', 'Eliminado existosamente');
+
+        }else{
+
+            return redirect()->route('main')->with('error', 'Acceso no autorizado'); 
+        }
+
+       
     }
 
     //idUser, idComment, idDesign, content
@@ -526,6 +542,20 @@ class SchemaController extends Controller
             "idComment" => $request->idComment]);
 
         return "complete";
+    }
+
+    public function reportDesign(Request $request){
+
+        
+
+        desreport::create([
+            "reason"=> $request->idReason,
+            "idUser" => auth()->user()->id,
+            "idDesign" => $request->idDesign
+            ]);
+
+
+        return "ok";
     }
 
 

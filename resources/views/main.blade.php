@@ -1,20 +1,35 @@
 @extends('base')
 
 @section('title')
-Recircuit 
+Recircuit - Diseños
 @endsection
 
 @section('content')
 
 <div class="container">
 
-	<div>
+	<div class="my-5">
+
+		<div id="ex" class="carousel mx-auto" data-ride="carousel">
+		<div class="carousel-inner">
 		
+		<div class="carousel-item active">
+		<img class="center" src="{{asset('imgs/Recir2.png')}}" alt="First slide">
+		</div>
+
+		</div>
+		</div>
 
 
 	</div>
+
+	@if(Session::has('error'))
+				<div id="success-board" class="card-body py-2 bg-danger rounded">
+					<span class="text-white">{{Session::get('error')}}</span>
+				</div>	
+	@endif
 	
-	<div class="card lower-aligment mb-1">
+	<div class="card mb-1">
 		<div class="card-header bold cst-blue-bg wht-text text-sub-1">Los diseños mas recientes</div>
 		<div class="card-body px-0">
 
@@ -101,7 +116,7 @@ Recircuit
 
 		</div>
 
-		<div class="card lower-aligment mb-1">
+		<div class="card mb-1">
 		<div class="card-header bold cst-blue-bg wht-text text-sub-1">Más gustados</div>
 		<div class="card-body px-0">
 

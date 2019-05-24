@@ -34,7 +34,7 @@ class mainControl extends Controller
 
     public function land(){
         if(isset(auth()->user()->id)){
-            return view('main');
+             return redirect()->route('main');
         }else{
         return view('land');
         }
@@ -144,7 +144,111 @@ class mainControl extends Controller
     }
 
     public function admin(){
+      if(auth()->user()->is_admin == "Yes"){
         return view('admin');
+      }
+      else{
+        return redirect()->route('main')->with('error', 'Acceso no autorizado');  
+      }
+    }
+
+    public function getReports(Request $request)
+    {
+
+      $cList = DB::select('call GetReports()');
+
+      $dataArray = [];
+
+      $reas = " ";
+
+      $toSearch = " ";
+
+      foreach ($cList as $cL) {
+
+         switch ($cL->reason) {
+            case '1':
+              $reas = "Contenido inapropiado";
+              break;
+            case '2':
+               $reas = "Contenido ofensivo";
+              break;        
+            case '3':
+               $reas = "Contenido de naturaleza sexual";
+              break;
+            case '4':
+               $reas = "Contenido deceptivo o irrevelevante";
+              break;                          
+          }
+
+         switch ($cL->difficulty) {
+                       case '1':
+                           $toSearch = "Principiante";
+                           break;
+                       case '2':
+                           $toSearch = "Avanzado";
+                           break;
+                       case '3':
+                           $toSearch = "Experto";
+                           break;
+                       case '4':
+                           $toSearch = "Imposible";
+                           break;
+                       default:
+                           # code...
+                           break;
+                   }        
+
+        $dataAdder = "<div class=\"card mb-1\">
+          <div class=\"card-header\"> Reportado por: <b>".
+          $reas
+           ."</b> por <a href=\"".route('profile', ['id' => $cL->reportingId])."\">". $cL->reporting ."</a> el <b>". $cL->reportDate ."</b>
+          </div>
+          <div class=\"card-body d-flex justify-content-start\">
+
+            <div class=\"card col-md-3\">
+            <div class=\"card-body\">
+            <a class=\"text-dark\" href=\"".route('schema', ['id' => $cL->id])."\">
+            <img class=\"w-100\" src=\"". asset($cL->thumb_path) ."\">    
+            </a>
+            </div>
+
+            </div>
+
+            <div class=\"card container-fluid px-0\">
+              <a class=\"text-dark\" href=\"".route('schema', ['id' => $cL->id])."\">
+              <div class=\"card-header d-flex justify-content-around\"><b>". $cL->title ."</b>
+              </a>
+              <p class=\"w-75 ml-5 mb-0\"><b>".$cL->likes."</b> Me gusta</p></div>
+              <div class=\"card-body\">
+                <p class=\"text-sub-3\">
+                ". $cL->description ."
+                </p>
+                <p class=\"text-sub-3\">
+                Dificultad: <b>". $toSearch ."</b>
+
+                </p>
+              </div>
+              
+              <div class=\"card-footer text-muted d-flex justify-content-around\">
+                <p class=\"mb-0 w-75\">Publicado el ". $cL->created_at ." por <a href=\"".route('profile', ['id' => $cL->reportedId])."\">".$cL->reported."</a></p>
+                </div>
+            </div>
+
+          </div>
+          <div class=\"card-footer text-muted d-flex justify-content-center\">
+                <button class=\"btn btn-danger rnw mx-1\"><img src=\"{{asset('imgs/garbage.png')}}\">Eliminar Reporte</button>
+                <button class=\"btn btn-danger rnw float-right mx-1\"><img src=\"{{asset('imgs/garbage.png')}}\"> Eliminar diseño</button>
+            </div>
+
+          </div>";
+
+
+
+        array_push($dataArray, $dataAdder);
+        
+      }
+
+      return $dataArray;
     }
 
 }

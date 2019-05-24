@@ -150,7 +150,7 @@ Perfil de {{$user->username}} - Recircuit
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 						<a class="dropdown-item" href="{{route('mschema', ['id' => "$design->id"])}}"><img  src="{{asset('imgs/register.png')}}"> Modificar</a>
-						<a class="dropdown-item" href="#"><img src="{{asset('imgs/garbage.png')}}"> Borrar</a>
+						<a class="dropdown-item" href="{{route('dschema', ['id' => "$design->id"])}}"><img src="{{asset('imgs/garbage.png')}}"> Borrar</a>
 
 						</div>
 						</div>

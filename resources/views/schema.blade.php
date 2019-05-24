@@ -86,10 +86,20 @@
 				<div class="container">
 					<p>Publicado el: <b>{{$design->created_at}}</b></p>
 					@auth
-					<button class="btn btn-danger rnw float-right mx-1"><img src="{{asset('imgs/danger.png')}}"> Reportar</button>
+          <div class="col-sx-2 form-inline float-right">
+          <select class="form-control float-right" name="reasonRep">
+            <option value="1">Contenido inapropiado</option>
+            <option value="2">Contenido ofensivo</option>
+            <option value="3">Contenido de naturaleza sexual</option>
+            <option value="4">Contenido deceptivo o irrevelevante</option>
+          </select>
+          </div>
+					<button id="repDesign" class="btn btn-danger rnw float-right mx-1"><img src="{{asset('imgs/danger.png')}}"> Reportar</button>
 					@if($design->userid == auth()->user()->id)
 					<a href="{{route('mschema', ['id' => "$design->id"])}}"><button class="btn btn-info cnw float-right mx-1"><img src="{{asset('imgs/settings.png')}}"> Modificar</button></a>
-					<button class="btn btn-danger rnw float-right mx-1"><img src="{{asset('imgs/garbage.png')}}"> Borrar</button>
+
+          <a href="{{route('dschema', ['id' => "$design->id"])}}">
+					<button class="btn btn-danger rnw float-right mx-1"><img src="{{asset('imgs/garbage.png')}}"> Borrar</button></a>
 					@endif
 
 					@if($design->userid != auth()->user()->id)
@@ -138,7 +148,7 @@
 
 					@auth
 					<div class="card-body d-inline-block">
-						<img class="col-sm-2 h-25" src="{{asset('imgs/RE.png')}}">
+						
 						<div class="w-100 container-fluid">
 								<div class="form-group row d-flex justify-content-start w-100">
 								<label class="col-form-label text-md-right" >Titulo:</label> 
@@ -463,6 +473,48 @@
         });
 
 		///
+
+      $("#repDesign").click(function() {
+
+        var idDesign = {{request()->route('id')}};
+
+        var idReason = $("select[name=reasonRep]").val();
+
+        $("#repDesign").hide();
+
+        $("select[name=reasonRep]").hide();
+
+        $.ajax({
+              type:'POST',
+              url:'{{route('reportDesign')}}',
+              async : true,
+              data:{
+                _token: '{{csrf_token()}}',
+                idDesign: idDesign,
+                idReason: idReason
+              },
+              cache: false,
+              success: function(data) {
+                if(data == "ok"){
+                alert("Reporte exitoso");
+
+              }
+
+              },
+               fail: function(xhr, textStatus, errorThrown){
+              alert('request failed');
+          }
+
+            });
+
+      });
+
+    ///
+
+
+      
+
+    ///
 	});
 
 

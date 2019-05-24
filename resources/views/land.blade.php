@@ -15,7 +15,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" type="text/css" href="{{secure_asset('css/reStyle.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/reStyle.css')}}">
 
 	
 
@@ -153,8 +153,8 @@
 <div class="container">
 
 	<div class="col-md-5 card card-tran float-left lower-aligment">
-
-		<h3>{{ __('Recircuit is a circuit schematic repository holding over a thousand schematics, from simple to complex, we have it') }}</h3>
+    <img class="w-100" src="{{asset('imgs/Recir2.png')}}">
+		<h3 class="mt-4">{{ __('Recircuit is a circuit schematic repository holding over a thousand schematics, from simple to complex, we have it') }}</h3>
 		
 	</div>
 	<div class="card border-dark col-md-6 px-0 float-right mt-3">

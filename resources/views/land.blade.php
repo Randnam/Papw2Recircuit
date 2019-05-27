@@ -15,7 +15,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" type="text/css" href="{{asset('css/reStyle.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{secure_asset('css/reStyle.css')}}">
 
 	
 
@@ -170,7 +170,7 @@
 				<label class="col-md-4 col-form-label text-md-right" >Nombre:</label> 
 
 				<div class="col-md-6">
-				<input type="text" name="name"> 
+				<input type="text" name="name" class="form-control" required=""> 
 				</div>
 
 				</div>
@@ -179,7 +179,7 @@
 				<label class="col-md-4 col-form-label text-md-right" >Apellido:</label> 
 
 				<div class="col-md-6">
-				<input type="text" name="last_name"> 
+				<input type="text" name="last_name" class="form-control" required=""> 
 				</div>
 
 				</div>
@@ -188,7 +188,7 @@
 				<label class="col-md-4 col-form-label text-md-right" >Usuario:</label> 
 
 				<div class="col-md-6">
-				<input type="text" name="username"> 
+				<input type="text" name="username" class="form-control" required=""> 
 				</div>
 
 				</div>
@@ -197,7 +197,7 @@
 					<label class="col-md-4 col-form-label text-md-right">Constraseña:</label> 
 
 					<div class="col-md-6">
-					<input type="password" name="password"> 
+					<input type="password" name="password" class="form-control" required=""> 
 					</div>
 
 				</div>
@@ -206,7 +206,7 @@
 					<label class="col-md-4 col-form-label text-md-right" >Correo:</label> 
 
 					<div class="col-md-6">
-					<input type="mail" name="email"> 
+					<input type="mail" name="email" class="form-control" required=""> 
 					</div>
 				</div>
 
@@ -214,7 +214,7 @@
 					<label class="col-md-4 col-form-label text-md-right" >Avatar:</label> 
 
 					<div class="col-md-6">
-					<input type="file" name="avatar_path"> 
+					<input type="file" class="btn btn-light form-control" name="avatar_path" accept=".png, .jpg, .jpeg" required=""> 
 					</div>
 				</div>	
 
@@ -222,7 +222,7 @@
 					<label class="col-md-4 col-form-label text-md-right" >Fondo:</label> 
 
 					<div class="col-md-6">
-					<input type="file" name="back_path"> 
+					<input type="file" class="btn btn-light form-control" name="back_path" accept=".png, .jpg, .jpeg" required=""> 
 					</div>
 				</div>
 

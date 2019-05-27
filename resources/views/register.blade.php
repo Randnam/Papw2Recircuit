@@ -89,7 +89,7 @@ Registrarse - Recircuit
                             <label for="" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}:</label>
 
                             <div class="col-md-6">
-                                <input id="avatarPic" type="file" class="" name="avatar_path" required>
+                                <input id="avatarPic" type="file" class="btn btn-light" name="avatar_path" required>
                             </div>
                         </div>
 
@@ -97,7 +97,7 @@ Registrarse - Recircuit
                             <label for="" class="col-md-4 col-form-label text-md-right">{{ __('Profile') }}:</label>
 
                             <div class="col-md-6">
-                                <input id="profilePic" type="file" class="" name="back_path" required>
+                                <input id="profilePic" type="file" class="btn btn-light" name="back_path" required>
                             </div>
                         </div>
 

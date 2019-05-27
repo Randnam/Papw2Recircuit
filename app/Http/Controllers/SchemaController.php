@@ -11,6 +11,7 @@ use App\desreport;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class SchemaController extends Controller
 {
@@ -75,6 +76,13 @@ class SchemaController extends Controller
         ]);
 
         //'title', 'description' , 'difficulty', 'thumb_path', 'img_path_one', 'img_path_two', 'img_path_three' , 'video_path', 'idUser' Good god help us all
+        $videoImage = $request->file('video_path');
+
+        if($videoImage->getClientOriginalExtension() != "mp4"){
+            return back()->withErrors(['video_path' => 'Este no es un formato valido mp4'])
+            ->withInput(input::all());
+        }
+
 
          $thumbImage = $request->file('thumb_path');
          $thumbImageSaveAsName = time() .  "-thumb." . $thumbImage->getClientOriginalExtension();
@@ -100,7 +108,7 @@ class SchemaController extends Controller
          $img_image_three_url = $upload_path . $img_Image_threeSaveAsName;
          $success = $img_Image_three->move($upload_path, $img_Image_threeSaveAsName);
 
-         $videoImage = $request->file('video_path');
+         
          $videoImageSaveAsName = time() .  "-video." . $videoImage->getClientOriginalExtension();
          $upload_path = 'images/';
          $video_image_url = $upload_path . $videoImageSaveAsName;

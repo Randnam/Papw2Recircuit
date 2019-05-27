@@ -39,21 +39,21 @@ Modificar diseño - Recircuit
 
 				<div class="row mb-2">
 				<label class="text-sub-2 col-md-4">Thumbnail: </label>
-				<input class="ml-1 col-md-5" type="file" name="thumb_path">
+				<input class="btn btn-light ml-1 col-md-5" type="file" accept=".png, .jpg, .jpeg" name="thumb_path">
 				</div>
 				
 				<div class="row mb-2">
 				<label class="text-sub-2 col-md-4">Imagenes: </label>
 				<div class="container col-md-5">
-				<input class="ml-1 my-1" type="file" name="img_path_one">
-				<input class="ml-1 my-1" type="file" name="img_path_two">
-				<input class="ml-1 my-1" type="file" name="img_path_three">
+				<input class="btn btn-light ml-1 my-1" type="file" accept=".png, .jpg, .jpeg" name="img_path_one">
+				<input class="btn btn-light ml-1 my-1" type="file" accept=".png, .jpg, .jpeg" name="img_path_two">
+				<input class="btn btn-light ml-1 my-1" type="file" accept=".png, .jpg, .jpeg" name="img_path_three">
 				</div>
 				</div>
 
 				<div class="row mb-2">
 				<label class="text-sub-2 col-md-4">Video:</label>
-				<input class="ml-1 col-md-5" type="file" name="video_path">
+				<input class="btn btn-light ml-1 col-md-5" type="file" accept=".png, .jpg, .jpeg" name="video_path">
 				</div>
 
 				<div class="container d-flex justify-content-center">

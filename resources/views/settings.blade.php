@@ -48,7 +48,7 @@ Modificaciones de {{$user->name}} - Recircuit
 				</div>
 				<div class="row mb-2">
 				<label class="text-sub-2 col-md-4">Avatar:</label>
-				<input class="ml-1 col-md-5" type="file" name="avatar_path">
+				<input class="ml-1 col-md-5" type="file" name="avatar_path" accept=".png, .jpg, .jpeg">
  				 @if ($errors->has('avatar_path'))
 					<span class="invalid-feedback" role="alert">
 						<strong>{{ $errors->first('avatar_path') }}</strong>
@@ -58,7 +58,7 @@ Modificaciones de {{$user->name}} - Recircuit
 		
 				<div class="row mb-2">
 				<label class="text-sub-2 col-md-4">Portada:</label>
-				<input class="ml-1 col-md-5" type="file" name="back_path">
+				<input class="ml-1 col-md-5" type="file" name="back_path" accept=".png, .jpg, .jpeg">
 				 @if ($errors->has('back_path'))
 					<span class="invalid-feedback" role="alert">
 						<strong>{{ $errors->first('back_path') }}</strong>

@@ -185,7 +185,7 @@
 				<div id="commSection" class="card">
 
 
-
+          <img class="mx-auto d-block" src="{{asset('imgs/loading2.gif')}}">
 
 
 
@@ -340,6 +340,10 @@
         function Reload(){
 
         	var idDesign = {{request()->route('id')}};
+
+          $("#commSection").empty();
+
+          $("#commSection").append("<img class='mx-auto d-block' src='{{asset('imgs/loading2.gif')}}'>");
 
         	$.ajax({
             	type:'POST',

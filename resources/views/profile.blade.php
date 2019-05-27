@@ -195,7 +195,7 @@ Perfil de {{$user->username}} - Recircuit
 
 			<div class="card mb-1">
 				<div class="card-header form-inline d-flex justify-content-between cst-blue-bg wht-text">
-				<h4>Usuarios siguiendo</h4>
+				<h4>Seguidores de {{$user->username}}  </h4>
 				
 				</div>
 
@@ -256,7 +256,7 @@ Perfil de {{$user->username}} - Recircuit
 
 			<div class="card mb-1">
 				<div class="card-header form-inline d-flex justify-content-between cst-blue-bg wht-text">
-				<h4>Seguidores del Usuario</h4>
+				<h4>Usuarios seguidos por {{$user->username}}</h4>
 				
 				</div>
 

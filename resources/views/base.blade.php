@@ -120,7 +120,7 @@
         <?php $userImg = auth()->user()->avatar_path ?>
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle hand-over" id="navbarDropdownProf" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{auth()->user()->name}} {{auth()->user()->last_name}} 
+          {{auth()->user()->name}} {{auth()->user()->last_name}} | {{auth()->user()->username}}
           <img src="{{asset("$userImg")}}" class="roundd" width="40" height="30">
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="dropProf">

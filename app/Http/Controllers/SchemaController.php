@@ -23,15 +23,29 @@ class SchemaController extends Controller
     {
         //
 
+
+
         $designs = DB::select('call getMostRecent');
 
         $liked = DB::select('call getMostLiked');
 
+        $likedFifthteen = DB::select('call getMostLikedFifthteenDays');
+
+
+        if(isset(auth()->user()->id)){
+
+            $fromFollows = DB::select('call getRecentFollows(?)', [auth()->user()->id]);
+
+            $mostLikedFollow = DB::select('call getMostFollowLiked(?)', [auth()->user()->id]);
+
+            return view('main', compact('designs','liked','fromFollows','mostLikedFollow','likedFifthteen'));
+
+        }
 
 
 
 
-        return view('main', compact('designs','liked'));
+        return view('main', compact('designs','liked','likedFifthteen'));
     }
 
     /**

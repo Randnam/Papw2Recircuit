@@ -51,6 +51,8 @@ Route::post('/search', 'mainControl@search')->name('search');
 
 Route::get('/admin', 'mainControl@admin')->name('admin')->middleware('auth');
 Route::post('/getReports', 'mainControl@getReports')->name('getReports')->middleware('auth');
+Route::post('/deleteReport', 'mainControl@deleteReport')->name('deleteReport')->middleware('auth');
+Route::post('/deleteDesign', 'mainControl@deleteDesign')->name('deleteDesign')->middleware('auth');
 
 Route::get('/register', 'UserController@create')->name('register')->middleware('guest');
 Route::post('/register', 'UserController@store');

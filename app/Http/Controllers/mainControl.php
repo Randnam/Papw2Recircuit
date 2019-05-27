@@ -236,8 +236,10 @@ class mainControl extends Controller
 
           </div>
           <div class=\"card-footer text-muted d-flex justify-content-center\">
-                <button class=\"btn btn-danger rnw mx-1\"><img src=\"{{asset('imgs/garbage.png')}}\">Eliminar Reporte</button>
-                <button class=\"btn btn-danger rnw float-right mx-1\"><img src=\"{{asset('imgs/garbage.png')}}\"> Eliminar diseño</button>
+                <input type=\"hidden\" class=\"idRep\" name=\"idRep\" value=\"".$cL->desId."\">
+                <input type=\"hidden\" class=\"idDes\" name=\"idDes\" value=\"".$cL->id."\">
+                <button class=\"btn btn-danger dRep rnw mx-1\"><img src=\"" . asset('imgs/garbage.png'). "\">Eliminar Reporte</button>
+                <button class=\"btn btn-danger dDes rnw float-right mx-1\"><img src=\"" . asset('imgs/garbage.png') ."\"> Eliminar diseño</button>
             </div>
 
           </div>";
@@ -249,6 +251,27 @@ class mainControl extends Controller
       }
 
       return $dataArray;
+    }
+
+    public function deleteReport(Request $request)
+    {
+      $id = $request->idReport;
+
+      DB::select('call PurgeReport(?)', [$id]);
+
+      return "ok";
+
+      
+    }
+
+    public function deleteDesign(Request $request){
+
+      $id = $request->idDesign;
+
+      DB::select('call PurgeDesign(?)',[$id]);
+
+      return "ok";
+
     }
 
 }

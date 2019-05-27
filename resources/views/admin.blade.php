@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('title')
+Moderacion - Recircuit
+@endsection
+
 @section('content')
 
 <div class="container my-5">
@@ -8,7 +12,7 @@
 
 		<div class="card-body" id="reportHolder">
 					
-
+		<img class="mx-auto d-block" src="{{asset('imgs/loading2.gif')}}">
 
 
 
@@ -30,7 +34,83 @@
 
 		reload();
 
+		$("body").on('click','.dRep', function() {
 
+
+
+        	var idReport = $(this).parent().find('input[name="idRep"]').val();
+
+        	@auth
+        	var idUser = {{auth()->user()->id}} ;
+        	@endauth
+
+        	$(this).hide();
+
+        	$(this).parent().find('.dDes').hide();
+
+      
+
+            $.ajax({
+            	type:'POST',
+            	url:'{{route('deleteReport')}}',
+            	async : true,
+            	data:{
+            		_token: '{{csrf_token()}}',
+            		idReport: idReport
+            	},
+            	cache: false,
+            	success: function(data) {
+          	
+          			if(data == "ok"){
+          			reload();
+            		}
+            	},
+            	 fail: function(xhr, textStatus, errorThrown){
+       				alert('request failed');
+   				}
+
+            });
+
+
+        });
+
+		$("body").on('click','.dDes', function() {
+
+        	var idDesign = $(this).parent().find('input[name="idDes"]').val();
+
+        	@auth
+        	var idUser = {{auth()->user()->id}} ;
+        	@endauth
+
+        	$(this).hide();
+
+        	$(this).parent().find('.dRep').hide();
+
+        	
+
+            $.ajax({
+            	type:'POST',
+            	url:'{{route('deleteDesign')}}',
+            	async : true,
+            	data:{
+            		_token: '{{csrf_token()}}',
+            		idDesign: idDesign
+            	},
+            	cache: false,
+            	success: function(data) {
+          	
+          			if(data == "ok"){
+          			reload();
+            		}
+            	},
+            	 fail: function(xhr, textStatus, errorThrown){
+       				alert('request failed');
+   				}
+
+            });
+
+
+        });
 
 
 
@@ -38,7 +118,11 @@
 		///
 
 		function reload() {
+
+			$("#reportHolder").empty();
 			// body...
+			$("#reportHolder").append("<img class='mx-auto d-block' src='{{asset('imgs/loading2.gif')}}'>");
+
 
     	$.ajax({
             	type:'POST',
